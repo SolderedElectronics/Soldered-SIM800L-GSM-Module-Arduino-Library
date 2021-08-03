@@ -21,13 +21,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 */
 
+#ifndef __AVR__
+
 #ifndef __SoftwareSerial_h
 #define __SoftwareSerial_h
 
 #include "circular_queue/circular_queue.h"
 #include <Stream.h>
 
-enum SoftwareSerialParity : uint8_t {
+enum SoftwareSerialParity : uint8_t
+{
     SWSERIAL_PARITY_NONE = 000,
     SWSERIAL_PARITY_EVEN = 020,
     SWSERIAL_PARITY_ODD = 030,
@@ -35,7 +38,8 @@ enum SoftwareSerialParity : uint8_t {
     SWSERIAL_PARITY_SPACE = 070,
 };
 
-enum SoftwareSerialConfig {
+enum SoftwareSerialConfig
+{
     SWSERIAL_5N1 = SWSERIAL_PARITY_NONE,
     SWSERIAL_6N1,
     SWSERIAL_7N1,
@@ -84,15 +88,16 @@ enum SoftwareSerialConfig {
 /// Instead, the begin() function handles pin assignments and logic inversion.
 /// It also has optional input buffer capacity arguments for byte buffer and ISR bit buffer.
 /// Bitrates up to at least 115200 can be used.
-class SoftwareSerial : public Stream {
-public:
+class SoftwareSerial : public Stream
+{
+  public:
     SoftwareSerial();
     /// Ctor to set defaults for pins.
     /// @param rxPin the GPIO pin used for RX
     /// @param txPin -1 for onewire protocol, GPIO pin used for twowire TX
     SoftwareSerial(int8_t rxPin, int8_t txPin = -1, bool invert = false);
-    SoftwareSerial(const SoftwareSerial&) = delete;
-    SoftwareSerial& operator= (const SoftwareSerial&) = delete;
+    SoftwareSerial(const SoftwareSerial &) = delete;
+    SoftwareSerial &operator=(const SoftwareSerial &) = delete;
     virtual ~SoftwareSerial();
     /// Configure the SoftwareSerial object for use.
     /// @param baud the TX/RX bitrate
@@ -104,18 +109,18 @@ public:
     /// @param isrBufCapacity 0: derived from bufCapacity. The capacity of the internal asynchronous
     ///	       bit receive buffer, a suggested size is bufCapacity times the sum of
     ///	       start, data, parity and stop bit count.
-    void begin(uint32_t baud, SoftwareSerialConfig config,
-        int8_t rxPin, int8_t txPin, bool invert,
-        int bufCapacity = 64, int isrBufCapacity = 0);
-    void begin(uint32_t baud, SoftwareSerialConfig config,
-        int8_t rxPin, int8_t txPin) {
+    void begin(uint32_t baud, SoftwareSerialConfig config, int8_t rxPin, int8_t txPin, bool invert,
+               int bufCapacity = 64, int isrBufCapacity = 0);
+    void begin(uint32_t baud, SoftwareSerialConfig config, int8_t rxPin, int8_t txPin)
+    {
         begin(baud, config, rxPin, txPin, m_invert);
     }
-    void begin(uint32_t baud, SoftwareSerialConfig config,
-        int8_t rxPin) {
+    void begin(uint32_t baud, SoftwareSerialConfig config, int8_t rxPin)
+    {
         begin(baud, config, rxPin, m_txPin, m_invert);
     }
-    void begin(uint32_t baud, SoftwareSerialConfig config = SWSERIAL_8N1) {
+    void begin(uint32_t baud, SoftwareSerialConfig config = SWSERIAL_8N1)
+    {
         begin(baud, config, m_rxPin, m_txPin, m_invert);
     }
 
@@ -129,11 +134,14 @@ public:
 
     int available() override;
 #if defined(ESP8266)
-    int availableForWrite() override {
+    int availableForWrite() override
+    {
 #else
-    int availableForWrite() {
+    int availableForWrite()
+    {
 #endif
-        if (!m_txValid) return 0;
+        if (!m_txValid)
+            return 0;
         return 1;
     }
     int peek() override;
@@ -144,47 +152,54 @@ public:
         return m_lastReadParity;
     }
     /// @returns The calculated bit for even parity of the parameter byte
-    static bool parityEven(uint8_t byte) {
+    static bool parityEven(uint8_t byte)
+    {
         byte ^= byte >> 4;
         byte &= 0xf;
         return (0x6996 >> byte) & 1;
     }
     /// @returns The calculated bit for odd parity of the parameter byte
-    static bool parityOdd(uint8_t byte) {
+    static bool parityOdd(uint8_t byte)
+    {
         byte ^= byte >> 4;
         byte &= 0xf;
         return (0x9669 >> byte) & 1;
     }
     /// The read(buffer, size) functions are non-blocking, the same as readBytes but without timeout
-    int read(uint8_t* buffer, size_t size)
+    int read(uint8_t *buffer, size_t size)
 #if defined(ESP8266)
         override
 #endif
         ;
     /// The read(buffer, size) functions are non-blocking, the same as readBytes but without timeout
-    int read(char* buffer, size_t size) {
-        return read(reinterpret_cast<uint8_t*>(buffer), size);
+    int read(char *buffer, size_t size)
+    {
+        return read(reinterpret_cast<uint8_t *>(buffer), size);
     }
     /// @returns The number of bytes read into buffer, up to size. Times out if the limit set through
     ///          Stream::setTimeout() is reached.
-    size_t readBytes(uint8_t* buffer, size_t size) override;
+    size_t readBytes(uint8_t *buffer, size_t size) override;
     /// @returns The number of bytes read into buffer, up to size. Times out if the limit set through
     ///          Stream::setTimeout() is reached.
-    size_t readBytes(char* buffer, size_t size) override {
-        return readBytes(reinterpret_cast<uint8_t*>(buffer), size);
+    size_t readBytes(char *buffer, size_t size) override
+    {
+        return readBytes(reinterpret_cast<uint8_t *>(buffer), size);
     }
     void flush() override;
     size_t write(uint8_t byte) override;
     size_t write(uint8_t byte, SoftwareSerialParity parity);
-    size_t write(const uint8_t* buffer, size_t size) override;
-    size_t write(const char* buffer, size_t size) {
-        return write(reinterpret_cast<const uint8_t*>(buffer), size);
+    size_t write(const uint8_t *buffer, size_t size) override;
+    size_t write(const char *buffer, size_t size)
+    {
+        return write(reinterpret_cast<const uint8_t *>(buffer), size);
     }
-    size_t write(const uint8_t* buffer, size_t size, SoftwareSerialParity parity);
-    size_t write(const char* buffer, size_t size, SoftwareSerialParity parity) {
-        return write(reinterpret_cast<const uint8_t*>(buffer), size, parity);
+    size_t write(const uint8_t *buffer, size_t size, SoftwareSerialParity parity);
+    size_t write(const char *buffer, size_t size, SoftwareSerialParity parity)
+    {
+        return write(reinterpret_cast<const uint8_t *>(buffer), size, parity);
     }
-    operator bool() const {
+    operator bool() const
+    {
         return (-1 == m_rxPin || m_rxValid) && (-1 == m_txPin || m_txValid) && !(-1 == m_rxPin && m_oneWire);
     }
 
@@ -194,13 +209,24 @@ public:
     void enableTx(bool on);
 
     // AVR compatibility methods.
-    bool listen() { enableRx(true); return true; }
+    bool listen()
+    {
+        enableRx(true);
+        return true;
+    }
     void end();
-    bool isListening() { return m_rxEnabled; }
-    bool stopListening() { enableRx(false); return true; }
+    bool isListening()
+    {
+        return m_rxEnabled;
+    }
+    bool stopListening()
+    {
+        enableRx(false);
+        return true;
+    }
 
     /// Set an event handler for received data.
-    void onReceive(Delegate<void(int available), void*> handler);
+    void onReceive(Delegate<void(int available), void *> handler);
 
     /// Run the internal processing and event engine. Can be iteratively called
     /// from loop, or otherwise scheduled.
@@ -208,15 +234,14 @@ public:
 
     using Print::write;
 
-private:
+  private:
     // If sync is false, it's legal to exceed the deadline, for instance,
     // by enabling interrupts.
     void preciseDelay(bool sync);
     // If withStopBit is set, either cycle contains a stop bit.
     // If dutyCycle == 0, the level is not forced to HIGH.
     // If offCycle == 0, the level remains unchanged from dutyCycle.
-    void writePeriod(
-        uint32_t dutyCycle, uint32_t offCycle, bool withStopBit);
+    void writePeriod(uint32_t dutyCycle, uint32_t offCycle, bool withStopBit);
     bool isValidGPIOpin(int8_t pin);
     bool isValidRxGPIOpin(int8_t pin);
     bool isValidTxGPIOpin(int8_t pin);
@@ -224,10 +249,10 @@ private:
     bool hasRxGPIOPullUp(int8_t pin);
     /* check m_rxValid that calling is safe */
     void rxBits();
-    void rxBits(const uint32_t& isrCycle);
+    void rxBits(const uint32_t &isrCycle);
 
-    static void rxBitISR(SoftwareSerial* self);
-    static void rxBitSyncISR(SoftwareSerial* self);
+    static void rxBitISR(SoftwareSerial *self);
+    static void rxBitSyncISR(SoftwareSerial *self);
 
     // Member variables
     int8_t m_rxPin = -1;
@@ -250,21 +275,25 @@ private:
     uint32_t m_bitCycles;
     uint8_t m_parityInPos;
     uint8_t m_parityOutPos;
-    int8_t m_rxCurBit; // 0 thru (m_pduBits - m_stopBits - 1): data/parity bits. -1: start bit. (m_pduBits - 1): stop bit.
+    int8_t
+        m_rxCurBit; // 0 thru (m_pduBits - m_stopBits - 1): data/parity bits. -1: start bit. (m_pduBits - 1): stop bit.
     uint8_t m_rxCurByte = 0;
-    std::unique_ptr<circular_queue<uint8_t> > m_buffer;
-    std::unique_ptr<circular_queue<uint8_t> > m_parityBuffer;
+    std::unique_ptr<circular_queue<uint8_t>> m_buffer;
+    std::unique_ptr<circular_queue<uint8_t>> m_parityBuffer;
     uint32_t m_periodStart;
     uint32_t m_periodDuration;
     uint32_t m_savedPS = 0;
-    // the ISR stores the relative bit times in the buffer. The inversion corrected level is used as sign bit (2's complement):
-    // 1 = positive including 0, 0 = negative.
-    std::unique_ptr<circular_queue<uint32_t, SoftwareSerial*> > m_isrBuffer;
-    const Delegate<void(uint32_t&&), SoftwareSerial*> m_isrBufferForEachDel = { [](SoftwareSerial* self, uint32_t&& isrCycle) { self->rxBits(isrCycle); }, this };
+    // the ISR stores the relative bit times in the buffer. The inversion corrected level is used as sign bit (2's
+    // complement): 1 = positive including 0, 0 = negative.
+    std::unique_ptr<circular_queue<uint32_t, SoftwareSerial *>> m_isrBuffer;
+    const Delegate<void(uint32_t &&), SoftwareSerial *> m_isrBufferForEachDel = {
+        [](SoftwareSerial *self, uint32_t &&isrCycle) { self->rxBits(isrCycle); }, this};
     std::atomic<bool> m_isrOverflow;
     uint32_t m_isrLastCycle;
     bool m_rxCurParity = false;
-    Delegate<void(int available), void*> receiveHandler;
+    Delegate<void(int available), void *> receiveHandler;
 };
 
 #endif // __SoftwareSerial_h
+
+#endif
