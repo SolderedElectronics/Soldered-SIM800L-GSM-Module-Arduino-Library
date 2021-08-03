@@ -37,12 +37,6 @@
 
 #include "BareBoneSim800.h"
 
-#ifdef __AVR__
-#include "AltSoftSerial.h"
-#else
-#include "../espsoftwareserial/src/SoftwareSerial.h"
-#endif
-
 #include "Arduino.h"
 
 // Initialize the constructors
@@ -70,7 +64,7 @@ AltSoftSerial gsmSerial;
 SoftSerial gsmSerial;
 #endif
 
-//
+// f (receiveHandler) {
 // PRIVATE METHODS
 //
 byte BareBoneSim800::_checkResponse(uint16_t timeout)
