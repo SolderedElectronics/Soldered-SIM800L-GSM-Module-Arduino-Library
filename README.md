@@ -5,7 +5,7 @@
 
 | ![SIM800L Board](https://upload.wikimedia.org/wikipedia/commons/8/8f/Example_image.svg) |
 | :-------------------------------------------------------------------------------------: |
-| [SIM800L Board](https://www.solde.red/[_sku])                                           |
+| [SIM800L Board](https://www.solde.red/333071)                                           |
 
 SIM800L GSM Module Arduino Library by Soldered
 

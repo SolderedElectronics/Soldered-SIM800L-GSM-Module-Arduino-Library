@@ -36,7 +36,7 @@
  *		The code is an abstract from an Sim800 based IoT Energy Meter
  *
  *   Modified by: soldered.com
- *
+ *   See more at https://www.solde.red/333071
  */
 
 #include "SIM800L-SOLDERED.h"
