@@ -93,17 +93,17 @@ $(document).ready(function(){initNavTree('_alt_soft_serial___timers_8h_source.ht
 <a href="_alt_soft_serial___timers_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* An Alternative Software Serial Library</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * http://www.pjrc.com/teensy/td_libs_AltSoftSerial.html</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (c) 2014 PJRC.COM, LLC, Paul Stoffregen, paul@pjrc.com</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Permission is hereby granted, free of charge, to any person obtaining a copy</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * of this software and associated documentation files (the &quot;Software&quot;), to deal</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * in the Software without restriction, including without limitation the rights</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * copies of the Software, and to permit persons to whom the Software is</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * furnished to do so, subject to the following conditions:</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * The above copyright notice and this permission notice shall be included in</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * all copies or substantial portions of the Software.</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span></div>
@@ -114,169 +114,187 @@ $(document).ready(function(){initNavTree('_alt_soft_serial___timers_8h_source.ht
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#if defined(ALTSS_USE_TIMER1)</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_NOPRESCALE() (TIMSK1 = 0, TCCR1A = 0, TCCR1B = (1&lt;&lt;ICNC1) | (1&lt;&lt;CS10))</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_PRESCALE_8() (TIMSK1 = 0, TCCR1A = 0, TCCR1B = (1&lt;&lt;ICNC1) | (1&lt;&lt;CS11))</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_PRESCALE_256()   (TIMSK1 = 0, TCCR1A = 0, TCCR1B = (1&lt;&lt;ICNC1) | (1&lt;&lt;CS12))</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_NORMAL()     (TCCR1A = TCCR1A &amp; ~((1&lt;&lt;COM1A1) | (1&lt;&lt;COM1A0)))</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_TOGGLE()     (TCCR1A = (TCCR1A &amp; ~(1&lt;&lt;COM1A1)) | (1&lt;&lt;COM1A0))</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_CLEAR()      (TCCR1A = (TCCR1A | (1&lt;&lt;COM1A1)) &amp; ~(1&lt;&lt;COM1A0))</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_SET()        (TCCR1A = TCCR1A | ((1&lt;&lt;COM1A1) | (1&lt;&lt;COM1A0)))</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">  #define CONFIG_CAPTURE_FALLING_EDGE() (TCCR1B &amp;= ~(1&lt;&lt;ICES1))</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">  #define CONFIG_CAPTURE_RISING_EDGE()  (TCCR1B |= (1&lt;&lt;ICES1))</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">  #define ENABLE_INT_INPUT_CAPTURE()    (TIFR1 = (1&lt;&lt;ICF1), TIMSK1 = (1&lt;&lt;ICIE1))</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">  #define ENABLE_INT_COMPARE_A()    (TIFR1 = (1&lt;&lt;OCF1A), TIMSK1 |= (1&lt;&lt;OCIE1A))</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">  #define ENABLE_INT_COMPARE_B()    (TIFR1 = (1&lt;&lt;OCF1B), TIMSK1 |= (1&lt;&lt;OCIE1B))</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">  #define DISABLE_INT_INPUT_CAPTURE()   (TIMSK1 &amp;= ~(1&lt;&lt;ICIE1))</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">  #define DISABLE_INT_COMPARE_A()   (TIMSK1 &amp;= ~(1&lt;&lt;OCIE1A))</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">  #define DISABLE_INT_COMPARE_B()   (TIMSK1 &amp;= ~(1&lt;&lt;OCIE1B))</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">  #define GET_TIMER_COUNT()     (TCNT1)</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">  #define GET_INPUT_CAPTURE()       (ICR1)</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">  #define GET_COMPARE_A()       (OCR1A)</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">  #define GET_COMPARE_B()       (OCR1B)</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">  #define SET_COMPARE_A(val)        (OCR1A = (val))</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">  #define SET_COMPARE_B(val)        (OCR1B = (val))</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">  #define CAPTURE_INTERRUPT     TIMER1_CAPT_vect</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">  #define COMPARE_A_INTERRUPT       TIMER1_COMPA_vect</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">  #define COMPARE_B_INTERRUPT       TIMER1_COMPB_vect</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_NOPRESCALE()     (TIMSK1 = 0, TCCR1A = 0, TCCR1B = (1 &lt;&lt; ICNC1) | (1 &lt;&lt; CS10))</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_PRESCALE_8()     (TIMSK1 = 0, TCCR1A = 0, TCCR1B = (1 &lt;&lt; ICNC1) | (1 &lt;&lt; CS11))</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_PRESCALE_256()   (TIMSK1 = 0, TCCR1A = 0, TCCR1B = (1 &lt;&lt; ICNC1) | (1 &lt;&lt; CS12))</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_NORMAL()         (TCCR1A = TCCR1A &amp; ~((1 &lt;&lt; COM1A1) | (1 &lt;&lt; COM1A0)))</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_TOGGLE()         (TCCR1A = (TCCR1A &amp; ~(1 &lt;&lt; COM1A1)) | (1 &lt;&lt; COM1A0))</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_CLEAR()          (TCCR1A = (TCCR1A | (1 &lt;&lt; COM1A1)) &amp; ~(1 &lt;&lt; COM1A0))</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_SET()            (TCCR1A = TCCR1A | ((1 &lt;&lt; COM1A1) | (1 &lt;&lt; COM1A0)))</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define CONFIG_CAPTURE_FALLING_EDGE() (TCCR1B &amp;= ~(1 &lt;&lt; ICES1))</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#define CONFIG_CAPTURE_RISING_EDGE()  (TCCR1B |= (1 &lt;&lt; ICES1))</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define ENABLE_INT_INPUT_CAPTURE()    (TIFR1 = (1 &lt;&lt; ICF1), TIMSK1 = (1 &lt;&lt; ICIE1))</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define ENABLE_INT_COMPARE_A()        (TIFR1 = (1 &lt;&lt; OCF1A), TIMSK1 |= (1 &lt;&lt; OCIE1A))</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define ENABLE_INT_COMPARE_B()        (TIFR1 = (1 &lt;&lt; OCF1B), TIMSK1 |= (1 &lt;&lt; OCIE1B))</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define DISABLE_INT_INPUT_CAPTURE()   (TIMSK1 &amp;= ~(1 &lt;&lt; ICIE1))</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define DISABLE_INT_COMPARE_A()       (TIMSK1 &amp;= ~(1 &lt;&lt; OCIE1A))</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define DISABLE_INT_COMPARE_B()       (TIMSK1 &amp;= ~(1 &lt;&lt; OCIE1B))</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define GET_TIMER_COUNT()             (TCNT1)</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define GET_INPUT_CAPTURE()           (ICR1)</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define GET_COMPARE_A()               (OCR1A)</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define GET_COMPARE_B()               (OCR1B)</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define SET_COMPARE_A(val)            (OCR1A = (val))</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define SET_COMPARE_B(val)            (OCR1B = (val))</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define CAPTURE_INTERRUPT             TIMER1_CAPT_vect</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define COMPARE_A_INTERRUPT           TIMER1_COMPA_vect</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define COMPARE_B_INTERRUPT           TIMER1_COMPB_vect</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#elif defined(ALTSS_USE_TIMER3)</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_NOPRESCALE() (TIMSK3 = 0, TCCR3A = 0, TCCR3B = (1&lt;&lt;ICNC3) | (1&lt;&lt;CS30))</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_PRESCALE_8() (TIMSK3 = 0, TCCR3A = 0, TCCR3B = (1&lt;&lt;ICNC3) | (1&lt;&lt;CS31))</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_PRESCALE_256()   (TIMSK3 = 0, TCCR3A = 0, TCCR3B = (1&lt;&lt;ICNC3) | (1&lt;&lt;CS32))</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_NORMAL()     (TCCR3A = TCCR3A &amp; ~((1&lt;&lt;COM3A1) | (1&lt;&lt;COM3A0)))</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_TOGGLE()     (TCCR3A = (TCCR3A &amp; ~(1&lt;&lt;COM3A1)) | (1&lt;&lt;COM3A0))</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_CLEAR()      (TCCR3A = (TCCR3A | (1&lt;&lt;COM3A1)) &amp; ~(1&lt;&lt;COM3A0))</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_SET()        (TCCR3A = TCCR3A | ((1&lt;&lt;COM3A1) | (1&lt;&lt;COM3A0)))</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">  #define CONFIG_CAPTURE_FALLING_EDGE() (TCCR3B &amp;= ~(1&lt;&lt;ICES3))</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">  #define CONFIG_CAPTURE_RISING_EDGE()  (TCCR3B |= (1&lt;&lt;ICES3))</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">  #define ENABLE_INT_INPUT_CAPTURE()    (TIFR3 = (1&lt;&lt;ICF3), TIMSK3 = (1&lt;&lt;ICIE3))</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">  #define ENABLE_INT_COMPARE_A()    (TIFR3 = (1&lt;&lt;OCF3A), TIMSK3 |= (1&lt;&lt;OCIE3A))</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">  #define ENABLE_INT_COMPARE_B()    (TIFR3 = (1&lt;&lt;OCF3B), TIMSK3 |= (1&lt;&lt;OCIE3B))</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">  #define DISABLE_INT_INPUT_CAPTURE()   (TIMSK3 &amp;= ~(1&lt;&lt;ICIE3))</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">  #define DISABLE_INT_COMPARE_A()   (TIMSK3 &amp;= ~(1&lt;&lt;OCIE3A))</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">  #define DISABLE_INT_COMPARE_B()   (TIMSK3 &amp;= ~(1&lt;&lt;OCIE3B))</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">  #define GET_TIMER_COUNT()     (TCNT3)</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">  #define GET_INPUT_CAPTURE()       (ICR3)</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">  #define GET_COMPARE_A()       (OCR3A)</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">  #define GET_COMPARE_B()       (OCR3B)</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">  #define SET_COMPARE_A(val)        (OCR3A = (val))</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">  #define SET_COMPARE_B(val)        (OCR3B = (val))</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">  #define CAPTURE_INTERRUPT     TIMER3_CAPT_vect</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">  #define COMPARE_A_INTERRUPT       TIMER3_COMPA_vect</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">  #define COMPARE_B_INTERRUPT       TIMER3_COMPB_vect</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_NOPRESCALE()     (TIMSK3 = 0, TCCR3A = 0, TCCR3B = (1 &lt;&lt; ICNC3) | (1 &lt;&lt; CS30))</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_PRESCALE_8()     (TIMSK3 = 0, TCCR3A = 0, TCCR3B = (1 &lt;&lt; ICNC3) | (1 &lt;&lt; CS31))</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_PRESCALE_256()   (TIMSK3 = 0, TCCR3A = 0, TCCR3B = (1 &lt;&lt; ICNC3) | (1 &lt;&lt; CS32))</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_NORMAL()         (TCCR3A = TCCR3A &amp; ~((1 &lt;&lt; COM3A1) | (1 &lt;&lt; COM3A0)))</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_TOGGLE()         (TCCR3A = (TCCR3A &amp; ~(1 &lt;&lt; COM3A1)) | (1 &lt;&lt; COM3A0))</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_CLEAR()          (TCCR3A = (TCCR3A | (1 &lt;&lt; COM3A1)) &amp; ~(1 &lt;&lt; COM3A0))</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_SET()            (TCCR3A = TCCR3A | ((1 &lt;&lt; COM3A1) | (1 &lt;&lt; COM3A0)))</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define CONFIG_CAPTURE_FALLING_EDGE() (TCCR3B &amp;= ~(1 &lt;&lt; ICES3))</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define CONFIG_CAPTURE_RISING_EDGE()  (TCCR3B |= (1 &lt;&lt; ICES3))</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define ENABLE_INT_INPUT_CAPTURE()    (TIFR3 = (1 &lt;&lt; ICF3), TIMSK3 = (1 &lt;&lt; ICIE3))</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define ENABLE_INT_COMPARE_A()        (TIFR3 = (1 &lt;&lt; OCF3A), TIMSK3 |= (1 &lt;&lt; OCIE3A))</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define ENABLE_INT_COMPARE_B()        (TIFR3 = (1 &lt;&lt; OCF3B), TIMSK3 |= (1 &lt;&lt; OCIE3B))</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define DISABLE_INT_INPUT_CAPTURE()   (TIMSK3 &amp;= ~(1 &lt;&lt; ICIE3))</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#define DISABLE_INT_COMPARE_A()       (TIMSK3 &amp;= ~(1 &lt;&lt; OCIE3A))</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define DISABLE_INT_COMPARE_B()       (TIMSK3 &amp;= ~(1 &lt;&lt; OCIE3B))</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#define GET_TIMER_COUNT()             (TCNT3)</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#define GET_INPUT_CAPTURE()           (ICR3)</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define GET_COMPARE_A()               (OCR3A)</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define GET_COMPARE_B()               (OCR3B)</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define SET_COMPARE_A(val)            (OCR3A = (val))</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#define SET_COMPARE_B(val)            (OCR3B = (val))</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define CAPTURE_INTERRUPT             TIMER3_CAPT_vect</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#define COMPARE_A_INTERRUPT           TIMER3_COMPA_vect</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define COMPARE_B_INTERRUPT           TIMER3_COMPB_vect</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#elif defined(ALTSS_USE_TIMER4)</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_NOPRESCALE() (TIMSK4 = 0, TCCR4A = 0, TCCR4B = (1&lt;&lt;ICNC4) | (1&lt;&lt;CS40))</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_PRESCALE_8() (TIMSK4 = 0, TCCR4A = 0, TCCR4B = (1&lt;&lt;ICNC4) | (1&lt;&lt;CS41))</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_PRESCALE_256()   (TIMSK4 = 0, TCCR4A = 0, TCCR4B = (1&lt;&lt;ICNC4) | (1&lt;&lt;CS42))</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_NORMAL()     (TCCR4A = TCCR4A &amp; ~((1&lt;&lt;COM4A1) | (1&lt;&lt;COM4A0)))</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_TOGGLE()     (TCCR4A = (TCCR4A &amp; ~(1&lt;&lt;COM4A1)) | (1&lt;&lt;COM4A0))</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_CLEAR()      (TCCR4A = (TCCR4A | (1&lt;&lt;COM4A1)) &amp; ~(1&lt;&lt;COM4A0))</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_SET()        (TCCR4A = TCCR4A | ((1&lt;&lt;COM4A1) | (1&lt;&lt;COM4A0)))</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">  #define CONFIG_CAPTURE_FALLING_EDGE() (TCCR4B &amp;= ~(1&lt;&lt;ICES4))</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">  #define CONFIG_CAPTURE_RISING_EDGE()  (TCCR4B |= (1&lt;&lt;ICES4))</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">  #define ENABLE_INT_INPUT_CAPTURE()    (TIFR4 = (1&lt;&lt;ICF4), TIMSK4 = (1&lt;&lt;ICIE4))</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">  #define ENABLE_INT_COMPARE_A()    (TIFR4 = (1&lt;&lt;OCF4A), TIMSK4 |= (1&lt;&lt;OCIE4A))</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">  #define ENABLE_INT_COMPARE_B()    (TIFR4 = (1&lt;&lt;OCF4B), TIMSK4 |= (1&lt;&lt;OCIE4B))</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">  #define DISABLE_INT_INPUT_CAPTURE()   (TIMSK4 &amp;= ~(1&lt;&lt;ICIE4))</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">  #define DISABLE_INT_COMPARE_A()   (TIMSK4 &amp;= ~(1&lt;&lt;OCIE4A))</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">  #define DISABLE_INT_COMPARE_B()   (TIMSK4 &amp;= ~(1&lt;&lt;OCIE4B))</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">  #define GET_TIMER_COUNT()     (TCNT4)</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">  #define GET_INPUT_CAPTURE()       (ICR4)</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">  #define GET_COMPARE_A()       (OCR4A)</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">  #define GET_COMPARE_B()       (OCR4B)</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">  #define SET_COMPARE_A(val)        (OCR4A = (val))</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">  #define SET_COMPARE_B(val)        (OCR4B = (val))</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">  #define CAPTURE_INTERRUPT     TIMER4_CAPT_vect</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">  #define COMPARE_A_INTERRUPT       TIMER4_COMPA_vect</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">  #define COMPARE_B_INTERRUPT       TIMER4_COMPB_vect</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_NOPRESCALE()     (TIMSK4 = 0, TCCR4A = 0, TCCR4B = (1 &lt;&lt; ICNC4) | (1 &lt;&lt; CS40))</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_PRESCALE_8()     (TIMSK4 = 0, TCCR4A = 0, TCCR4B = (1 &lt;&lt; ICNC4) | (1 &lt;&lt; CS41))</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_PRESCALE_256()   (TIMSK4 = 0, TCCR4A = 0, TCCR4B = (1 &lt;&lt; ICNC4) | (1 &lt;&lt; CS42))</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_NORMAL()         (TCCR4A = TCCR4A &amp; ~((1 &lt;&lt; COM4A1) | (1 &lt;&lt; COM4A0)))</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_TOGGLE()         (TCCR4A = (TCCR4A &amp; ~(1 &lt;&lt; COM4A1)) | (1 &lt;&lt; COM4A0))</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_CLEAR()          (TCCR4A = (TCCR4A | (1 &lt;&lt; COM4A1)) &amp; ~(1 &lt;&lt; COM4A0))</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_SET()            (TCCR4A = TCCR4A | ((1 &lt;&lt; COM4A1) | (1 &lt;&lt; COM4A0)))</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#define CONFIG_CAPTURE_FALLING_EDGE() (TCCR4B &amp;= ~(1 &lt;&lt; ICES4))</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#define CONFIG_CAPTURE_RISING_EDGE()  (TCCR4B |= (1 &lt;&lt; ICES4))</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#define ENABLE_INT_INPUT_CAPTURE()    (TIFR4 = (1 &lt;&lt; ICF4), TIMSK4 = (1 &lt;&lt; ICIE4))</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#define ENABLE_INT_COMPARE_A()        (TIFR4 = (1 &lt;&lt; OCF4A), TIMSK4 |= (1 &lt;&lt; OCIE4A))</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#define ENABLE_INT_COMPARE_B()        (TIFR4 = (1 &lt;&lt; OCF4B), TIMSK4 |= (1 &lt;&lt; OCIE4B))</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#define DISABLE_INT_INPUT_CAPTURE()   (TIMSK4 &amp;= ~(1 &lt;&lt; ICIE4))</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#define DISABLE_INT_COMPARE_A()       (TIMSK4 &amp;= ~(1 &lt;&lt; OCIE4A))</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#define DISABLE_INT_COMPARE_B()       (TIMSK4 &amp;= ~(1 &lt;&lt; OCIE4B))</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#define GET_TIMER_COUNT()             (TCNT4)</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#define GET_INPUT_CAPTURE()           (ICR4)</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#define GET_COMPARE_A()               (OCR4A)</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#define GET_COMPARE_B()               (OCR4B)</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#define SET_COMPARE_A(val)            (OCR4A = (val))</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#define SET_COMPARE_B(val)            (OCR4B = (val))</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#define CAPTURE_INTERRUPT             TIMER4_CAPT_vect</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#define COMPARE_A_INTERRUPT           TIMER4_COMPA_vect</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#define COMPARE_B_INTERRUPT           TIMER4_COMPB_vect</span></div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#elif defined(ALTSS_USE_TIMER5)</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_NOPRESCALE() (TIMSK5 = 0, TCCR5A = 0, TCCR5B = (1&lt;&lt;ICNC5) | (1&lt;&lt;CS50))</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_PRESCALE_8() (TIMSK5 = 0, TCCR5A = 0, TCCR5B = (1&lt;&lt;ICNC5) | (1&lt;&lt;CS51))</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_PRESCALE_256()   (TIMSK5 = 0, TCCR5A = 0, TCCR5B = (1&lt;&lt;ICNC5) | (1&lt;&lt;CS52))</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_NORMAL()     (TCCR5A = TCCR5A &amp; ~((1&lt;&lt;COM5A1) | (1&lt;&lt;COM5A0)))</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_TOGGLE()     (TCCR5A = (TCCR5A &amp; ~(1&lt;&lt;COM5A1)) | (1&lt;&lt;COM5A0))</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_CLEAR()      (TCCR5A = (TCCR5A | (1&lt;&lt;COM5A1)) &amp; ~(1&lt;&lt;COM5A0))</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_SET()        (TCCR5A = TCCR5A | ((1&lt;&lt;COM5A1) | (1&lt;&lt;COM5A0)))</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">  #define CONFIG_CAPTURE_FALLING_EDGE() (TCCR5B &amp;= ~(1&lt;&lt;ICES5))</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">  #define CONFIG_CAPTURE_RISING_EDGE()  (TCCR5B |= (1&lt;&lt;ICES5))</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">  #define ENABLE_INT_INPUT_CAPTURE()    (TIFR5 = (1&lt;&lt;ICF5), TIMSK5 = (1&lt;&lt;ICIE5))</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">  #define ENABLE_INT_COMPARE_A()    (TIFR5 = (1&lt;&lt;OCF5A), TIMSK5 |= (1&lt;&lt;OCIE5A))</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">  #define ENABLE_INT_COMPARE_B()    (TIFR5 = (1&lt;&lt;OCF5B), TIMSK5 |= (1&lt;&lt;OCIE5B))</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">  #define DISABLE_INT_INPUT_CAPTURE()   (TIMSK5 &amp;= ~(1&lt;&lt;ICIE5))</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">  #define DISABLE_INT_COMPARE_A()   (TIMSK5 &amp;= ~(1&lt;&lt;OCIE5A))</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">  #define DISABLE_INT_COMPARE_B()   (TIMSK5 &amp;= ~(1&lt;&lt;OCIE5B))</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">  #define GET_TIMER_COUNT()     (TCNT5)</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">  #define GET_INPUT_CAPTURE()       (ICR5)</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">  #define GET_COMPARE_A()       (OCR5A)</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">  #define GET_COMPARE_B()       (OCR5B)</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">  #define SET_COMPARE_A(val)        (OCR5A = (val))</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">  #define SET_COMPARE_B(val)        (OCR5B = (val))</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">  #define CAPTURE_INTERRUPT     TIMER5_CAPT_vect</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">  #define COMPARE_A_INTERRUPT       TIMER5_COMPA_vect</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">  #define COMPARE_B_INTERRUPT       TIMER5_COMPB_vect</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_NOPRESCALE()     (TIMSK5 = 0, TCCR5A = 0, TCCR5B = (1 &lt;&lt; ICNC5) | (1 &lt;&lt; CS50))</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_PRESCALE_8()     (TIMSK5 = 0, TCCR5A = 0, TCCR5B = (1 &lt;&lt; ICNC5) | (1 &lt;&lt; CS51))</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_PRESCALE_256()   (TIMSK5 = 0, TCCR5A = 0, TCCR5B = (1 &lt;&lt; ICNC5) | (1 &lt;&lt; CS52))</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_NORMAL()         (TCCR5A = TCCR5A &amp; ~((1 &lt;&lt; COM5A1) | (1 &lt;&lt; COM5A0)))</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_TOGGLE()         (TCCR5A = (TCCR5A &amp; ~(1 &lt;&lt; COM5A1)) | (1 &lt;&lt; COM5A0))</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_CLEAR()          (TCCR5A = (TCCR5A | (1 &lt;&lt; COM5A1)) &amp; ~(1 &lt;&lt; COM5A0))</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_SET()            (TCCR5A = TCCR5A | ((1 &lt;&lt; COM5A1) | (1 &lt;&lt; COM5A0)))</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#define CONFIG_CAPTURE_FALLING_EDGE() (TCCR5B &amp;= ~(1 &lt;&lt; ICES5))</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#define CONFIG_CAPTURE_RISING_EDGE()  (TCCR5B |= (1 &lt;&lt; ICES5))</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#define ENABLE_INT_INPUT_CAPTURE()    (TIFR5 = (1 &lt;&lt; ICF5), TIMSK5 = (1 &lt;&lt; ICIE5))</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#define ENABLE_INT_COMPARE_A()        (TIFR5 = (1 &lt;&lt; OCF5A), TIMSK5 |= (1 &lt;&lt; OCIE5A))</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#define ENABLE_INT_COMPARE_B()        (TIFR5 = (1 &lt;&lt; OCF5B), TIMSK5 |= (1 &lt;&lt; OCIE5B))</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#define DISABLE_INT_INPUT_CAPTURE()   (TIMSK5 &amp;= ~(1 &lt;&lt; ICIE5))</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#define DISABLE_INT_COMPARE_A()       (TIMSK5 &amp;= ~(1 &lt;&lt; OCIE5A))</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#define DISABLE_INT_COMPARE_B()       (TIMSK5 &amp;= ~(1 &lt;&lt; OCIE5B))</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#define GET_TIMER_COUNT()             (TCNT5)</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#define GET_INPUT_CAPTURE()           (ICR5)</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#define GET_COMPARE_A()               (OCR5A)</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#define GET_COMPARE_B()               (OCR5B)</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#define SET_COMPARE_A(val)            (OCR5A = (val))</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#define SET_COMPARE_B(val)            (OCR5B = (val))</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#define CAPTURE_INTERRUPT             TIMER5_CAPT_vect</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#define COMPARE_A_INTERRUPT           TIMER5_COMPA_vect</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#define COMPARE_B_INTERRUPT           TIMER5_COMPB_vect</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#elif defined(ALTSS_USE_FTM0)</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="comment">// CH5 = input capture (input, pin 20)</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="comment">// CH6 = compare a     (output, pin 21)</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="comment">// CH0 = compare b     (input timeout)</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_NOPRESCALE() FTM0_SC = 0; FTM0_CNT = 0; FTM0_MOD = 0xFFFF; \</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">                    FTM0_SC = FTM_SC_CLKS(1) | FTM_SC_PS(0); \</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">                    digitalWriteFast(21, HIGH); \</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">                    NVIC_SET_PRIORITY(IRQ_FTM0, 48); \</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">                    FTM0_C0SC = 0x18; \</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">                    NVIC_ENABLE_IRQ(IRQ_FTM0);</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_PRESCALE_8() FTM0_SC = 0; FTM0_CNT = 0; FTM0_MOD = 0xFFFF; \</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">                    FTM0_SC = FTM_SC_CLKS(1) | FTM_SC_PS(3); \</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="preprocessor">                    digitalWriteFast(21, HIGH); \</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">                    NVIC_SET_PRIORITY(IRQ_FTM0, 48); \</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor">                    FTM0_C0SC = 0x18; \</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">                    NVIC_ENABLE_IRQ(IRQ_FTM0);</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">  #define CONFIG_TIMER_PRESCALE_128()   FTM0_SC = 0; FTM0_CNT = 0; FTM0_MOD = 0xFFFF; \</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">                    FTM0_SC = FTM_SC_CLKS(1) | FTM_SC_PS(7); \</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">                    digitalWriteFast(21, HIGH); \</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">                    NVIC_SET_PRIORITY(IRQ_FTM0, 48); \</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">                    FTM0_C0SC = 0x18; \</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="preprocessor">                    NVIC_ENABLE_IRQ(IRQ_FTM0);</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_NORMAL()     (FTM0_C6SC = 0)</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_TOGGLE()     (FTM0_C6SC = (FTM0_C6SC &amp; 0xC3) | 0x14)</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_CLEAR()      (FTM0_C6SC = (FTM0_C6SC &amp; 0xC3) | 0x18)</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">  #define CONFIG_MATCH_SET()        (FTM0_C6SC = (FTM0_C6SC &amp; 0xC3) | 0x1C)</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">  #define CONFIG_CAPTURE_FALLING_EDGE() (FTM0_C5SC = (FTM0_C5SC &amp; 0xC3) | 0x08)</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">  #define CONFIG_CAPTURE_RISING_EDGE()  (FTM0_C5SC = (FTM0_C5SC &amp; 0xC3) | 0x04)</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">  #define ENABLE_INT_INPUT_CAPTURE()    FTM0_C5SC = 0x48; \</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">                    CORE_PIN20_CONFIG = PORT_PCR_MUX(4)|PORT_PCR_PE|PORT_PCR_PS</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">  #define ENABLE_INT_COMPARE_A()    FTM0_C6SC |= 0x40; \</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">                    CORE_PIN21_CONFIG = PORT_PCR_MUX(4)|PORT_PCR_DSE|PORT_PCR_SRE</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor">  #define ENABLE_INT_COMPARE_B()    (FTM0_C0SC = 0x58)</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">  #define DISABLE_INT_INPUT_CAPTURE()   FTM0_C5SC &amp;= ~0x40; \</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">                    CORE_PIN20_CONFIG = PORT_PCR_MUX(1)|PORT_PCR_PE|PORT_PCR_PS</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">  #define DISABLE_INT_COMPARE_A()   FTM0_C6SC &amp;= ~0x40; \</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">                    CORE_PIN21_CONFIG = PORT_PCR_MUX(1)|PORT_PCR_DSE|PORT_PCR_SRE; \</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">                    digitalWriteFast(21, HIGH)</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">  #define DISABLE_INT_COMPARE_B()   (FTM0_C0SC &amp;= ~0x40)</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">  #define GET_TIMER_COUNT()     (FTM0_CNT)</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">  #define GET_INPUT_CAPTURE()       (FTM0_C5V)</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">  #define GET_COMPARE_A()       (FTM0_C6V)</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">  #define GET_COMPARE_B()       (FTM0_C0V)</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">  #define SET_COMPARE_A(val)        (FTM0_C6V = val)</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">  #define SET_COMPARE_B(val)        if (FTM0_C0SC &amp; FTM_CSC_CHF) FTM0_C0SC = 0x18; \</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">                    do { FTM0_C0V = (val); } while (FTM0_C0V != (val));</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">  #define CAPTURE_INTERRUPT     altss_capture_interrupt</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">  #define COMPARE_A_INTERRUPT       altss_compare_a_interrupt</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">  #define COMPARE_B_INTERRUPT       altss_compare_b_interrupt</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">  #ifdef ISR</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">  #undef ISR</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">  #define ISR(f) static void f (void)</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">// CH5 = input capture (input, pin 20)</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">// CH6 = compare a     (output, pin 21)</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">// CH0 = compare b     (input timeout)</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_NOPRESCALE()                                                                                      \</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">    FTM0_SC = 0;                                                                                                       \</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">    FTM0_CNT = 0;                                                                                                      \</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">    FTM0_MOD = 0xFFFF;                                                                                                 \</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">    FTM0_SC = FTM_SC_CLKS(1) | FTM_SC_PS(0);                                                                           \</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">    digitalWriteFast(21, HIGH);                                                                                        \</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">    NVIC_SET_PRIORITY(IRQ_FTM0, 48);                                                                                   \</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">    FTM0_C0SC = 0x18;                                                                                                  \</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="preprocessor">    NVIC_ENABLE_IRQ(IRQ_FTM0);</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_PRESCALE_8()                                                                                      \</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor">    FTM0_SC = 0;                                                                                                       \</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">    FTM0_CNT = 0;                                                                                                      \</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">    FTM0_MOD = 0xFFFF;                                                                                                 \</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">    FTM0_SC = FTM_SC_CLKS(1) | FTM_SC_PS(3);                                                                           \</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">    digitalWriteFast(21, HIGH);                                                                                        \</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">    NVIC_SET_PRIORITY(IRQ_FTM0, 48);                                                                                   \</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">    FTM0_C0SC = 0x18;                                                                                                  \</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="preprocessor">    NVIC_ENABLE_IRQ(IRQ_FTM0);</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">#define CONFIG_TIMER_PRESCALE_128()                                                                                    \</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">    FTM0_SC = 0;                                                                                                       \</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">    FTM0_CNT = 0;                                                                                                      \</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">    FTM0_MOD = 0xFFFF;                                                                                                 \</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">    FTM0_SC = FTM_SC_CLKS(1) | FTM_SC_PS(7);                                                                           \</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">    digitalWriteFast(21, HIGH);                                                                                        \</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">    NVIC_SET_PRIORITY(IRQ_FTM0, 48);                                                                                   \</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">    FTM0_C0SC = 0x18;                                                                                                  \</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">    NVIC_ENABLE_IRQ(IRQ_FTM0);</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_NORMAL()         (FTM0_C6SC = 0)</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_TOGGLE()         (FTM0_C6SC = (FTM0_C6SC &amp; 0xC3) | 0x14)</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_CLEAR()          (FTM0_C6SC = (FTM0_C6SC &amp; 0xC3) | 0x18)</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#define CONFIG_MATCH_SET()            (FTM0_C6SC = (FTM0_C6SC &amp; 0xC3) | 0x1C)</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">#define CONFIG_CAPTURE_FALLING_EDGE() (FTM0_C5SC = (FTM0_C5SC &amp; 0xC3) | 0x08)</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">#define CONFIG_CAPTURE_RISING_EDGE()  (FTM0_C5SC = (FTM0_C5SC &amp; 0xC3) | 0x04)</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">#define ENABLE_INT_INPUT_CAPTURE()                                                                                     \</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">    FTM0_C5SC = 0x48;                                                                                                  \</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">    CORE_PIN20_CONFIG = PORT_PCR_MUX(4) | PORT_PCR_PE | PORT_PCR_PS</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">#define ENABLE_INT_COMPARE_A()                                                                                         \</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">    FTM0_C6SC |= 0x40;                                                                                                 \</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">    CORE_PIN21_CONFIG = PORT_PCR_MUX(4) | PORT_PCR_DSE | PORT_PCR_SRE</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">#define ENABLE_INT_COMPARE_B() (FTM0_C0SC = 0x58)</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#define DISABLE_INT_INPUT_CAPTURE()                                                                                    \</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">    FTM0_C5SC &amp;= ~0x40;                                                                                                \</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">    CORE_PIN20_CONFIG = PORT_PCR_MUX(1) | PORT_PCR_PE | PORT_PCR_PS</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#define DISABLE_INT_COMPARE_A()                                                                                        \</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">    FTM0_C6SC &amp;= ~0x40;                                                                                                \</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">    CORE_PIN21_CONFIG = PORT_PCR_MUX(1) | PORT_PCR_DSE | PORT_PCR_SRE;                                                 \</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">    digitalWriteFast(21, HIGH)</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">#define DISABLE_INT_COMPARE_B() (FTM0_C0SC &amp;= ~0x40)</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">#define GET_TIMER_COUNT()       (FTM0_CNT)</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="preprocessor">#define GET_INPUT_CAPTURE()     (FTM0_C5V)</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#define GET_COMPARE_A()         (FTM0_C6V)</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#define GET_COMPARE_B()         (FTM0_C0V)</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#define SET_COMPARE_A(val)      (FTM0_C6V = val)</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">#define SET_COMPARE_B(val)                                                                                             \</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor">    if (FTM0_C0SC &amp; FTM_CSC_CHF)                                                                                       \</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">        FTM0_C0SC = 0x18;                                                                                              \</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">    do                                                                                                                 \</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor">    {                                                                                                                  \</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">        FTM0_C0V = (val);                                                                                              \</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">    } while (FTM0_C0V != (val));</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">#define CAPTURE_INTERRUPT   altss_capture_interrupt</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#define COMPARE_A_INTERRUPT altss_compare_a_interrupt</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">#define COMPARE_B_INTERRUPT altss_compare_b_interrupt</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor">#ifdef ISR</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#undef ISR</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#define ISR(f) static void f(void)</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
@@ -285,7 +303,7 @@ $(document).ready(function(){initNavTree('_alt_soft_serial___timers_8h_source.ht
     <ul>
         <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_87a455bccb09a92130c26a11a880c98a.html">libs</a></li><li class="navelem"><a class="el" href="dir_1222ee9a1e6cbee976d35fd798e2cd1e.html">BareBoneSim800</a></li><li class="navelem"><a class="el" href="dir_81e044dd82a51c180aad00dfae99855b.html">config</a></li><li class="navelem"><a class="el" href="_alt_soft_serial___timers_8h.html">AltSoftSerial_Timers.h</a></li>
         <li class="footer">
-            Generated on Tue Aug 3 2021 12:19:10 for SIM800L Arduino Library by Soldered by <a href="http://www.doxygen.org/index.html">
+            Generated on Tue Aug 3 2021 12:26:58 for SIM800L Arduino Library by Soldered by <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"
                     onerror="this.onerror=null;this.src='doxygen.svg';" /></a> 1.9.1.
             Dark theme by <a href="http://majerle.eu" target="_new">Tilen Majerle</a>. All rights reserved.

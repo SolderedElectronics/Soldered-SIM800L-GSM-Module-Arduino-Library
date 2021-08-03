@@ -7,5 +7,5 @@ var searchData=
   ['ghostl_2eh_101',['ghostl.h',['../ghostl_8h.html',1,'']]],
   ['gprsconnect_102',['gprsConnect',['../class_bare_bone_sim800.html#ac6a31970a6e1211c7bd5dcd3f172250f',1,'BareBoneSim800']]],
   ['gprsdisconnect_103',['gprsDisconnect',['../class_bare_bone_sim800.html#ad2c303c2952651e8ef348125c7751e4b',1,'BareBoneSim800']]],
-  ['gsmserial_104',['gsmSerial',['../_bare_bone_sim800_8cpp.html#a485da13ae5c9e01b4143a710571d434f',1,'gsmSerial():&#160;BareBoneSim800.cpp'],['../_bare_bone_sim800_8cpp.html#aa36dde80b579b3f215d77949c04495d6',1,'gsmSerial(9, 8):&#160;BareBoneSim800.cpp']]]
+  ['gsmserial_104',['gsmSerial',['../_bare_bone_sim800_8cpp.html#a485da13ae5c9e01b4143a710571d434f',1,'gsmSerial():&#160;BareBoneSim800.cpp'],['../_bare_bone_sim800_8cpp.html#a3a55a16802d084d625d2ce8a7fbce147',1,'gsmSerial(9, 8):&#160;BareBoneSim800.cpp']]]
 ];
