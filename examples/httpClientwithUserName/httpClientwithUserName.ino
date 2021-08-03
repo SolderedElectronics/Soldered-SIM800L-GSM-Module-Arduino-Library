@@ -40,11 +40,11 @@
 
 BareBoneSim800 sim800("your APN network", "your USERNAME",
                       "your PASSWORD"); // to declare the library with an APN, UserName and Password
-// BareBoneSim800 sim800("gloworld");
+                                        // BareBoneSim800 sim800("gloworld");
 
 // Connecting to the Internet and Acting as an HTTP Web Client
 // username and password has been set to "" in the Library Code
-const char resource[] = "postman-echo.com/get";
+char resource[] = "postman-echo.com/get";
 
 const int port = 80;
 
