@@ -24,8 +24,16 @@
 */
 var NAVTREE =
 [
-  [ "16x2 easyC LCD Library", "index.html", [
-    [ "NAZIV PROIZVODA Arduino library", "index.html", null ],
+  [ "SIM800L Arduino Library by Soldered", "index.html", [
+    [ "SIM800L Soldered Arduino library", "index.html", null ],
+    [ "Contributor Covenant Code of Conduct", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html", [
+      [ "Our Pledge", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md8", null ],
+      [ "Our Standards", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md9", null ],
+      [ "Our Responsibilities", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md10", null ],
+      [ "Scope", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md11", null ],
+      [ "Enforcement", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md12", null ],
+      [ "Attribution", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md13", null ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -37,14 +45,19 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"_generic-easy_c-_s_o_l_d_e_r_e_d_8cpp.html"
+"_alt_soft_serial_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

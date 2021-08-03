@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['readdata_30',['readData',['../class_easy_c.html#a9a3d39be50b348768bc4b5dea3dae01a',1,'EasyC']]],
-  ['readregister_31',['readRegister',['../class_easy_c.html#a45bd6c915c1fa0998e273f69ee2d2376',1,'EasyC']]]
+  ['checknewsms_122',['checkNewSMS',['../class_bare_bone_sim800.html#a3904f278747a6151dcaad54849ff717b',1,'BareBoneSim800']]],
+  ['closehttp_123',['closeHTTP',['../class_bare_bone_sim800.html#ad5079e66451d2bc91945369689a6cca5',1,'BareBoneSim800']]]
 ];
