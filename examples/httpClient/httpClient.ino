@@ -43,7 +43,7 @@ BareBoneSim800 sim800("internet.ht.hr"); // to declare the library with an APN
 
 // Connecting to the Internet and Acting as an HTTP Web Client
 // username and password has been set to "" in the Library Code
-const char resource[] = "postman-echo.com/get";
+char resource[] = "postman-echo.com/get";
 
 const int port = 80;
 

@@ -61,7 +61,7 @@ BareBoneSim800::BareBoneSim800(const char *networkAPN, const char *userName, con
 #ifdef __AVR__
 AltSoftSerial gsmSerial;
 #else
-SoftSerial gsmSerial(9, 8);
+SoftwareSerial gsmSerial(9, 8);
 #endif
 
 // f (receiveHandler) {
@@ -131,6 +131,7 @@ String BareBoneSim800::_readData()
             Serial.println(output);
         return output;
     }
+    return "";
 }
 
 int BareBoneSim800::_getLatestMessageIndex()
