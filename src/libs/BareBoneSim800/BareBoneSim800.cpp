@@ -61,7 +61,7 @@ BareBoneSim800::BareBoneSim800(const char *networkAPN, const char *userName, con
 #ifdef __AVR__
 AltSoftSerial gsmSerial;
 #else
-SoftSerial gsmSerial;
+SoftSerial gsmSerial(9, 8);
 #endif
 
 // f (receiveHandler) {
