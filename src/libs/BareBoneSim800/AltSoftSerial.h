@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-#ifdef __AVr__
+#ifdef __AVR__
 
 #ifndef AltSoftSerial_h
 #define AltSoftSerial_h
