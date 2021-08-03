@@ -36,7 +36,13 @@
  */
 
 #include "BareBoneSim800.h"
+
+#ifdef __AVR__
 #include "AltSoftSerial.h"
+#else
+#include "../espsoftwareserial/src/SoftwareSerial.h"
+#endif
+
 #include "Arduino.h"
 
 // Initialize the constructors
@@ -58,7 +64,11 @@ BareBoneSim800::BareBoneSim800(const char *networkAPN, const char *userName, con
     _passWord = passWord;
 }
 
+#ifdef __AVR__
 AltSoftSerial gsmSerial;
+#else
+SoftSerial gsmSerial;
+#endif
 
 //
 // PRIVATE METHODS
