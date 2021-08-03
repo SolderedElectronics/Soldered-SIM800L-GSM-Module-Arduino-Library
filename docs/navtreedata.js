@@ -34,14 +34,26 @@ var NAVTREE =
       [ "Enforcement", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md12", null ],
       [ "Attribution", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md13", null ]
     ] ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
+      ] ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ],
+        [ "Enumerator", "functions_eval.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -49,7 +61,10 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ]
+        [ "Variables", "globals_vars.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
+        [ "Enumerator", "globals_eval.html", null ]
       ] ]
     ] ]
   ] ]
@@ -57,7 +72,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_alt_soft_serial_8cpp.html"
+"_alt_soft_serial_8cpp.html",
+"classdelegate_1_1detail_1_1_delegate.html#a8c524197122e655a7c42240dcaefbd37",
+"classdelegate_1_1detail_1_1_delegate_p_impl_3_01void_00_01_r_00_01_p_8_8_8_01_4.html#a1a5fde8e0310dcc6ee363793547a7ea3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

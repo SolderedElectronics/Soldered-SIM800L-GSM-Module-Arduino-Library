@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['sendaddress_154',['sendAddress',['../class_easy_c.html#a10aa7df19e8c7bf12cd720b662f317a3',1,'EasyC']]],
-  ['senddata_155',['sendData',['../class_easy_c.html#afe8aa014ae53cad3b0f3c42f59277195',1,'EasyC']]],
-  ['sendhttpdata_156',['sendHTTPData',['../class_bare_bone_sim800.html#a07d436f4fc12d5975de77d1898890276',1,'BareBoneSim800']]],
-  ['sendsms_157',['sendSMS',['../class_bare_bone_sim800.html#abc76a40747bc340c315a7c335afe05e2',1,'BareBoneSim800']]],
-  ['setfullmode_158',['setFullMode',['../class_bare_bone_sim800.html#a42c0db9640a51a60c4a957e76911691c',1,'BareBoneSim800']]]
+  ['read_424',['read',['../class_alt_soft_serial.html#a77433300ee449641d29c51cd5d69f6ae',1,'AltSoftSerial']]],
+  ['readdata_425',['readData',['../class_easy_c.html#a9a3d39be50b348768bc4b5dea3dae01a',1,'EasyC']]],
+  ['readregister_426',['readRegister',['../class_easy_c.html#a45bd6c915c1fa0998e273f69ee2d2376',1,'EasyC']]],
+  ['readsimnumber_427',['readSIMNumber',['../class_bare_bone_sim800.html#ad1f900f0cab18fb067d13da90b64c240',1,'BareBoneSim800']]],
+  ['readsms_428',['readSMS',['../class_bare_bone_sim800.html#ad2bf770851c3efeab21d94b132a62dd9',1,'BareBoneSim800']]],
+  ['recycle_5fnode_5funsafe_429',['recycle_node_unsafe',['../classdelegate_1_1detail_1_1_multi_delegate_p_impl.html#a6830e221ed95f45f4e5142d2e06e6ed8',1,'delegate::detail::MultiDelegatePImpl']]],
+  ['reset_430',['reset',['../classstd_1_1unique__ptr.html#a83857ab2b72491b68c6b97f1ed252ccb',1,'std::unique_ptr']]]
 ];

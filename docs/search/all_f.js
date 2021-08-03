@@ -1,11 +1,19 @@
 var searchData=
 [
-  ['ticks_5fper_5fbit_84',['ticks_per_bit',['../_alt_soft_serial_8cpp.html#a74eaed3b526eeda6226f019653c21c5a',1,'AltSoftSerial.cpp']]],
-  ['timing_5ferror_85',['timing_error',['../class_alt_soft_serial.html#a9822a158d3bc4da35f79573fff40b721',1,'AltSoftSerial']]],
-  ['tx_5fbit_86',['tx_bit',['../_alt_soft_serial_8cpp.html#a60e4782d0af8a333c348e4a19d96c851',1,'AltSoftSerial.cpp']]],
-  ['tx_5fbuffer_87',['tx_buffer',['../_alt_soft_serial_8cpp.html#ac42b1b9b3157a253abc16a2cb35c0956',1,'AltSoftSerial.cpp']]],
-  ['tx_5fbuffer_5fhead_88',['tx_buffer_head',['../_alt_soft_serial_8cpp.html#aa4d2e07c23944fb99ba5a3acdbaeaaf0',1,'AltSoftSerial.cpp']]],
-  ['tx_5fbuffer_5ftail_89',['tx_buffer_tail',['../_alt_soft_serial_8cpp.html#a2ca5957324c9dfe8d0a06bcf3e8bc6b3',1,'AltSoftSerial.cpp']]],
-  ['tx_5fbyte_90',['tx_byte',['../_alt_soft_serial_8cpp.html#a5bbfbf8e12378506d05a484a7bda187e',1,'AltSoftSerial.cpp']]],
-  ['tx_5fstate_91',['tx_state',['../_alt_soft_serial_8cpp.html#a594ef84826ac772b963c950185852ea2',1,'AltSoftSerial.cpp']]]
+  ['read_175',['read',['../class_alt_soft_serial.html#a77433300ee449641d29c51cd5d69f6ae',1,'AltSoftSerial']]],
+  ['readdata_176',['readData',['../class_easy_c.html#a9a3d39be50b348768bc4b5dea3dae01a',1,'EasyC']]],
+  ['readme_2emd_177',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['readregister_178',['readRegister',['../class_easy_c.html#a45bd6c915c1fa0998e273f69ee2d2376',1,'EasyC']]],
+  ['readsimnumber_179',['readSIMNumber',['../class_bare_bone_sim800.html#ad1f900f0cab18fb067d13da90b64c240',1,'BareBoneSim800']]],
+  ['readsms_180',['readSMS',['../class_bare_bone_sim800.html#ad2bf770851c3efeab21d94b132a62dd9',1,'BareBoneSim800']]],
+  ['recycle_5fnode_5funsafe_181',['recycle_node_unsafe',['../classdelegate_1_1detail_1_1_multi_delegate_p_impl.html#a6830e221ed95f45f4e5142d2e06e6ed8',1,'delegate::detail::MultiDelegatePImpl']]],
+  ['reset_182',['reset',['../classstd_1_1unique__ptr.html#a83857ab2b72491b68c6b97f1ed252ccb',1,'std::unique_ptr']]],
+  ['rx_5fbit_183',['rx_bit',['../_alt_soft_serial_8cpp.html#a867d68c5f2be809301ecd4da278d85b8',1,'AltSoftSerial.cpp']]],
+  ['rx_5fbuffer_184',['rx_buffer',['../_alt_soft_serial_8cpp.html#a24b9edbdfa3ad62d3cd7bd483c4106f8',1,'AltSoftSerial.cpp']]],
+  ['rx_5fbuffer_5fhead_185',['rx_buffer_head',['../_alt_soft_serial_8cpp.html#acd6d0d02317269dbd696debfa746dcfc',1,'AltSoftSerial.cpp']]],
+  ['rx_5fbuffer_5ftail_186',['rx_buffer_tail',['../_alt_soft_serial_8cpp.html#a9c0ea0574c3dc9a70c0be1ee2f761c98',1,'AltSoftSerial.cpp']]],
+  ['rx_5fbyte_187',['rx_byte',['../_alt_soft_serial_8cpp.html#abecb9f7f424287335a67817a45e061a0',1,'AltSoftSerial.cpp']]],
+  ['rx_5fstate_188',['rx_state',['../_alt_soft_serial_8cpp.html#a114174d6b50f71ec03e33d3c8ac8d24c',1,'AltSoftSerial.cpp']]],
+  ['rx_5fstop_5fticks_189',['rx_stop_ticks',['../_alt_soft_serial_8cpp.html#a6f6cc04a879b286ba01bce29f22e0595',1,'AltSoftSerial.cpp']]],
+  ['rx_5ftarget_190',['rx_target',['../_alt_soft_serial_8cpp.html#ac4d321cc865711d404f06810a42dfa4b',1,'AltSoftSerial.cpp']]]
 ];

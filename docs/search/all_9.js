@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['library_5fversion_54',['library_version',['../class_alt_soft_serial.html#a66e0e09991908d52c0bfb09e58e6d392',1,'AltSoftSerial']]],
-  ['listen_55',['listen',['../class_alt_soft_serial.html#a40653f38e60e5a63ffe1a9588cd068b0',1,'AltSoftSerial']]]
+  ['kind_113',['kind',['../classdelegate_1_1detail_1_1_delegate_p_impl.html#a06c9439442dcb8f18826f471a90778f2',1,'delegate::detail::DelegatePImpl::kind()'],['../classdelegate_1_1detail_1_1_delegate_p_impl.html#a9312d86012e4833b3e75c7d7158feb0c',1,'delegate::detail::DelegatePImpl::kind()'],['../classdelegate_1_1detail_1_1_delegate_p_impl_3_01void_00_01_r_00_01_p_8_8_8_01_4.html#a51d2c143bc1014b141485fb98dd0397c',1,'delegate::detail::DelegatePImpl&lt; void, R, P... &gt;::kind()'],['../classdelegate_1_1detail_1_1_delegate_impl.html#a72dc96f76a36289814e534e18a7e00d3',1,'delegate::detail::DelegateImpl::kind()'],['../classdelegate_1_1detail_1_1_delegate_impl.html#a6d02cd03cdb2805abfc550c5c3079ccc',1,'delegate::detail::DelegateImpl::kind()'],['../classdelegate_1_1detail_1_1_delegate_impl_3_01void_00_01_r_01_4.html#a6085a2a8b7addb7deecc5f79202c0078',1,'delegate::detail::DelegateImpl&lt; void, R &gt;::kind()']]]
 ];

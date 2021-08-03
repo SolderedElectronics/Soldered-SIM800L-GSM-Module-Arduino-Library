@@ -1,10 +1,17 @@
 var searchData=
 [
-  ['address_11',['address',['../class_easy_c.html#a6f4c6f2e8723b0c0495e126d49f5fcda',1,'EasyC']]],
-  ['altsoftserial_12',['AltSoftSerial',['../class_alt_soft_serial.html',1,'AltSoftSerial'],['../class_alt_soft_serial.html#a8188ce69face6fd6e54e9cec48e0ea17',1,'AltSoftSerial::AltSoftSerial()'],['../class_alt_soft_serial.html#a4c1b45be0ec0264a17e6e446fb7db0a6',1,'AltSoftSerial::AltSoftSerial(uint8_t rxPin, uint8_t txPin, bool inverse=false)']]],
-  ['altsoftserial_2ecpp_13',['AltSoftSerial.cpp',['../_alt_soft_serial_8cpp.html',1,'']]],
-  ['altsoftserial_2eh_14',['AltSoftSerial.h',['../_alt_soft_serial_8h.html',1,'']]],
-  ['altsoftserial_5fboards_2eh_15',['AltSoftSerial_Boards.h',['../_alt_soft_serial___boards_8h.html',1,'']]],
-  ['altsoftserial_5ftimers_2eh_16',['AltSoftSerial_Timers.h',['../_alt_soft_serial___timers_8h.html',1,'']]],
-  ['available_17',['available',['../class_alt_soft_serial.html#ae0a17ac6af2d303788e35be5b087fb99',1,'AltSoftSerial']]]
+  ['add_12',['add',['../classdelegate_1_1detail_1_1_multi_delegate_p_impl.html#a56f4055d96ba68b441bf25a6788c2c46',1,'delegate::detail::MultiDelegatePImpl::add(Delegate &amp;&amp;del)'],['../classdelegate_1_1detail_1_1_multi_delegate_p_impl.html#ae348056e8bf6c5109d5f382bd90040f2',1,'delegate::detail::MultiDelegatePImpl::add(const Delegate &amp;del)']]],
+  ['address_13',['address',['../class_easy_c.html#a6f4c6f2e8723b0c0495e126d49f5fcda',1,'EasyC']]],
+  ['altsoftserial_14',['AltSoftSerial',['../class_alt_soft_serial.html',1,'AltSoftSerial'],['../class_alt_soft_serial.html#a4c1b45be0ec0264a17e6e446fb7db0a6',1,'AltSoftSerial::AltSoftSerial(uint8_t rxPin, uint8_t txPin, bool inverse=false)'],['../class_alt_soft_serial.html#a8188ce69face6fd6e54e9cec48e0ea17',1,'AltSoftSerial::AltSoftSerial()']]],
+  ['altsoftserial_2ecpp_15',['AltSoftSerial.cpp',['../_alt_soft_serial_8cpp.html',1,'']]],
+  ['altsoftserial_2eh_16',['AltSoftSerial.h',['../_alt_soft_serial_8h.html',1,'']]],
+  ['altsoftserial_5fboards_2eh_17',['AltSoftSerial_Boards.h',['../_alt_soft_serial___boards_8h.html',1,'']]],
+  ['altsoftserial_5ftimers_2eh_18',['AltSoftSerial_Timers.h',['../_alt_soft_serial___timers_8h.html',1,'']]],
+  ['arg_19',['arg',['../classdelegate_1_1detail_1_1_delegate_3_01_a_01_5_00_01_r_00_01_p_8_8_8_01_4.html#a47c92204c86803ca3f0f5a1fa49ffa68',1,'delegate::detail::Delegate&lt; A *, R, P... &gt;::arg()'],['../classdelegate_1_1detail_1_1_delegate_3_01_a_01_5_00_01_r_01_4.html#a10a33f5dd9aadd6ab8c68598fd756200',1,'delegate::detail::Delegate&lt; A *, R &gt;::arg()'],['../classdelegate_1_1detail_1_1_delegate_p_impl.html#a8bf806a6d189c9d30dd41dd43663b9ee',1,'delegate::detail::DelegatePImpl::arg() const'],['../classdelegate_1_1detail_1_1_delegate_p_impl.html#a8bf806a6d189c9d30dd41dd43663b9ee',1,'delegate::detail::DelegatePImpl::arg() const'],['../classdelegate_1_1detail_1_1_delegate_p_impl_3_01void_00_01_r_00_01_p_8_8_8_01_4.html#a728703a1f0d3d62dae36e275da7220f6',1,'delegate::detail::DelegatePImpl&lt; void, R, P... &gt;::arg() const'],['../classdelegate_1_1detail_1_1_delegate_p_impl_3_01void_00_01_r_00_01_p_8_8_8_01_4.html#a728703a1f0d3d62dae36e275da7220f6',1,'delegate::detail::DelegatePImpl&lt; void, R, P... &gt;::arg() const'],['../classdelegate_1_1detail_1_1_delegate_impl.html#af65a0327bc39d508d0c4def77441c5e3',1,'delegate::detail::DelegateImpl::arg() const'],['../classdelegate_1_1detail_1_1_delegate_impl.html#af65a0327bc39d508d0c4def77441c5e3',1,'delegate::detail::DelegateImpl::arg() const'],['../classdelegate_1_1detail_1_1_delegate_impl_3_01void_00_01_r_01_4.html#a53bc58121b23f6b2edbffb61258a757c',1,'delegate::detail::DelegateImpl&lt; void, R &gt;::arg() const'],['../classdelegate_1_1detail_1_1_delegate_impl_3_01void_00_01_r_01_4.html#a53bc58121b23f6b2edbffb61258a757c',1,'delegate::detail::DelegateImpl&lt; void, R &gt;::arg() const']]],
+  ['array_20',['array',['../structstd_1_1array.html',1,'std']]],
+  ['atomic_21',['atomic',['../classstd_1_1atomic.html#af07c335e1d77793174f1d43bf9f64f5e',1,'std::atomic::atomic()'],['../classstd_1_1atomic.html#ae346b9e8fdab01035ee0fe4887eca752',1,'std::atomic::atomic(T desired)'],['../classstd_1_1atomic.html',1,'std::atomic&lt; T &gt;']]],
+  ['atomic_3c_20size_5ft_20_3e_22',['atomic&lt; size_t &gt;',['../classstd_1_1atomic.html',1,'std']]],
+  ['atomic_5fthread_5ffence_23',['atomic_thread_fence',['../namespacestd.html#a4991d59c09ce15f1ba2e227f8621ba13',1,'std']]],
+  ['available_24',['available',['../class_alt_soft_serial.html#ae0a17ac6af2d303788e35be5b087fb99',1,'AltSoftSerial::available()'],['../classcircular__queue.html#a608296f379794a801f47479e3463ba0b',1,'circular_queue::available() const']]],
+  ['available_5ffor_5fpush_25',['available_for_push',['../classcircular__queue.html#ac469bbe62828b50d85b380c267ca5347',1,'circular_queue']]]
 ];
