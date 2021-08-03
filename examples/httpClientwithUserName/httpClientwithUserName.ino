@@ -33,7 +33,7 @@
  *        Version: v1.1
  *
  *   Modified by: soldered.com
- *
+ *   See more at https://www.solde.red/333071
  */
 
 #include "SIM800L-SOLDERED.h"
