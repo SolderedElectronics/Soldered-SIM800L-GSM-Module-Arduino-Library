@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ghostl_2eh_339',['ghostl.h',['../ghostl_8h.html',1,'']]]
+  ['multidelegate_2eh_324',['MultiDelegate.h',['../_multi_delegate_8h.html',1,'']]]
 ];

@@ -30,10 +30,6 @@ var files_dup =
       [ "Delegate< R(P...), A >", "class_delegate_3_01_r_07_p_8_8_8_08_00_01_a_01_4.html", "class_delegate_3_01_r_07_p_8_8_8_08_00_01_a_01_4" ],
       [ "Delegate< R(P...)>", "class_delegate_3_01_r_07_p_8_8_8_08_4.html", "class_delegate_3_01_r_07_p_8_8_8_08_4" ]
     ] ],
-    [ "easyC.cpp", "easy_c_8cpp.html", null ],
-    [ "easyC.h", "easy_c_8h.html", [
-      [ "EasyC", "class_easy_c.html", "class_easy_c" ]
-    ] ],
     [ "ghostl.h", "ghostl_8h.html", "ghostl_8h" ],
     [ "MultiDelegate.h", "_multi_delegate_8h.html", [
       [ "InterruptLock", "class_interrupt_lock.html", "class_interrupt_lock" ],

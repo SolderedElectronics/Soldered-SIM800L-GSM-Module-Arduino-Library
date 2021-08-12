@@ -34,7 +34,6 @@ var annotated_dup =
     [ "Delegate", "class_delegate.html", null ],
     [ "Delegate< R(P...), A >", "class_delegate_3_01_r_07_p_8_8_8_08_00_01_a_01_4.html", "class_delegate_3_01_r_07_p_8_8_8_08_00_01_a_01_4" ],
     [ "Delegate< R(P...)>", "class_delegate_3_01_r_07_p_8_8_8_08_4.html", "class_delegate_3_01_r_07_p_8_8_8_08_4" ],
-    [ "EasyC", "class_easy_c.html", "class_easy_c" ],
     [ "InterruptLock", "class_interrupt_lock.html", "class_interrupt_lock" ],
     [ "MultiDelegate", "class_multi_delegate.html", null ],
     [ "SIM800L", "class_s_i_m800_l.html", null ]

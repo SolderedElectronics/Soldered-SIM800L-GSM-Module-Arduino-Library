@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sim800l_321',['SIM800L',['../class_s_i_m800_l.html',1,'']]]
+  ['unique_5fptr_308',['unique_ptr',['../classstd_1_1unique__ptr.html',1,'std']]],
+  ['unique_5fptr_3c_20t_5b_5d_3e_309',['unique_ptr&lt; T[]&gt;',['../classstd_1_1unique__ptr.html',1,'std']]]
 ];

@@ -36,7 +36,6 @@ var hierarchy =
     [ "delegate::detail::DelegatePImpl< void, void, P... >", "classdelegate_1_1detail_1_1_delegate_p_impl.html", [
       [ "delegate::detail::Delegate< A, R, P >", "classdelegate_1_1detail_1_1_delegate.html", null ]
     ] ],
-    [ "EasyC", "class_easy_c.html", null ],
     [ "std::identity< T >", "structstd_1_1identity.html", null ],
     [ "InterruptLock", "class_interrupt_lock.html", null ],
     [ "std::iterator", null, [

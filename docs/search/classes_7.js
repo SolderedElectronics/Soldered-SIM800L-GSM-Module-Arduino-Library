@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['node_5ft_320',['Node_t',['../structdelegate_1_1detail_1_1_multi_delegate_p_impl_1_1_node__t.html',1,'delegate::detail::MultiDelegatePImpl']]]
+  ['sim800l_307',['SIM800L',['../class_s_i_m800_l.html',1,'']]]
 ];
