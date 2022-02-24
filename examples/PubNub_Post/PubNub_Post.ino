@@ -1,4 +1,8 @@
-/*    This is a bare bone library for communicating with SIM800
+/**
+ **************************************************
+ *
+ * @file        PubNub_Post.ino
+ * @brief       This is a bare bone library for communicating with SIM800
  *    It's barebone in that - it only provides basic functionalities while still
  *    maintaining strong performance and being memory friendly.
  *    It currently supports GSM(sending and reading SMS),
@@ -27,17 +31,16 @@
  *
  *   POWER SOURCE 4.2V (MAX) >>> VCC
  *
- *        Created on: Sep 28, 2018
- *        Author: Ayo Ayibiowu
- *        Email: charlesayibiowu@hotmail.com
- *        Version: v1.2
  *
- *		This Example demonstrate how to use the Sim800l to push data to the PubNub Data Stream Network
- *		The code is an abstract from an Sim800 based IoT Energy Meter
  *
  *   Modified by: soldered.com
  *   See more at https://www.solde.red/333071
- */
+ *
+ * @authors     Created on: Oct 24, 2017
+ *              Author: Ayo Ayibiowu
+ *              Email: charlesayibiowu@hotmail.com
+ *              Version: v1.0
+ ***************************************************/
 
 #include "SIM800L-SOLDERED.h"
 
@@ -66,7 +69,7 @@ bool initializeGSMDevice()
 {
     gsmClient.begin();
     delay(8000); // Here we are going to wait for about 10 secs for the GSM device to connect to a network
-    if (!gsmClient.isAttached())
+    if (!gsmClient.isAttached()) //Check if sim800 is connected
     {
         return false;
     }
@@ -77,9 +80,9 @@ bool initializeGSMDevice()
 
 void setup()
 {
-    Serial.begin(115200);
-    sim800.begin();
-    while (!Serial)
+    Serial.begin(115200); //Start serial communication with PC using 115200 baudrate
+    sim800.begin(); //Initialize sim800 module
+    while (!Serial) //Wait until serial is available
         ;
 
     Serial.println("Testing GSM module With The PUBNUB DataStream Network");
@@ -181,7 +184,7 @@ bool sendToCloud(float value1, float value2, String channelName)
     String result = gsmClient.sendHTTPData(strdup(ResourceData.c_str()));
 
     gsmClient.closeHTTP();
-    gsmClient.gprsDisconnect();
+    gsmClient.gprsDisconnect(); //Close connection with network
     if (result.indexOf("Sent") != -1)
     {
         // means an ack is found
