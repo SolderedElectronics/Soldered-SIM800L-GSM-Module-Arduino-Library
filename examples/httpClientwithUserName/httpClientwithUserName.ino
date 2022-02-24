@@ -1,4 +1,8 @@
-/*    This is a bare bone library for communicating with SIM800
+/**
+ **************************************************
+ *
+ * @file        httpClientwithUserName.ino
+ * @brief       This is a bare bone library for communicating with SIM800
  *    It's barebone in that - it only provides basic functunaitlites while still
  *    maintaining strong performance and being memory friendly.
  *    It currently supports GSM(sending and reading SMS),
@@ -27,14 +31,16 @@
  *
  *   POWER SOURCE 4.2V (MAX) >>> VCC
  *
- *        Created on: Oct 24, 2017
- *        Author: Ayo Ayibiowu
- *        Email: charlesayibiowu@hotmail.com
- *        Version: v1.1
+ *
  *
  *   Modified by: soldered.com
  *   See more at https://www.solde.red/333071
- */
+ *
+ * @authors     Created on: Oct 24, 2017
+ *              Author: Ayo Ayibiowu
+ *              Email: charlesayibiowu@hotmail.com
+ *              Version: v1.0
+ ***************************************************/
 
 #include "SIM800L-SOLDERED.h"
 
@@ -50,16 +56,16 @@ const int port = 80;
 
 void setup()
 {
-    Serial.begin(115200);
-    sim800.begin();
-    while (!Serial)
+    Serial.begin(115200); //Start serial communication with PC using 115200 baudrate
+    sim800.begin(); //Initialize sim800 module
+    while (!Serial) //Wait until serial is available
         ;
 
     Serial.println("Testing GSM module For GPRS Connectivity");
     delay(8000); // this delay is necessary, it helps the device to be ready and connect to a network
 
     Serial.println("Should be ready by now");
-    bool deviceAttached = sim800.isAttached();
+    bool deviceAttached = sim800.isAttached(); //Check if sim800 is connected
     if (deviceAttached)
         Serial.println("Device is Attached");
     else
@@ -67,7 +73,7 @@ void setup()
 
     // Connecting the the GPRS APN Network
     Serial.println(" Connecting to APN");
-    bool netConnect = sim800.gprsConnect();
+    bool netConnect = sim800.gprsConnect(); //Check if sim800 is connected to network
     if (netConnect)
         Serial.println("Connected to Network");
     else
@@ -76,13 +82,13 @@ void setup()
     if (netConnect)
     {
         Serial.println("Making HTTP Get Request");
-        String result = sim800.sendHTTPData(resource);
+        String result = sim800.gprsConnect(); //Send command
         Serial.println("Received Info: ");
         Serial.println(result);
     }
 
     sim800.closeHTTP(); // disconnect from server
-    sim800.gprsDisconnect();
+    sim800.gprsDisconnect(); //Close connection with network
 }
 
 void loop()
