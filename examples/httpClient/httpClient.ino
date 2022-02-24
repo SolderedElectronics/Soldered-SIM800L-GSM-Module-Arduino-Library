@@ -81,7 +81,7 @@ void setup()
     if (netConnect)
     {
         Serial.println("Making HTTP Get Request");
-        String result = sim800.gprsConnect(); //Send command
+        String result = sim800.sendHTTPData(resource); //Send command
         Serial.println("Received Info: ");
         Serial.println(result);
     }
