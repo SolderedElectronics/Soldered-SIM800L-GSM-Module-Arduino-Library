@@ -27,12 +27,12 @@ var NAVTREE =
   [ "SIM800L Arduino Library by Soldered", "index.html", [
     [ "SIM800L Soldered Arduino library", "index.html", null ],
     [ "Contributor Covenant Code of Conduct", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html", [
-      [ "Our Pledge", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md8", null ],
-      [ "Our Standards", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md9", null ],
-      [ "Our Responsibilities", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md10", null ],
-      [ "Scope", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md11", null ],
-      [ "Enforcement", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md12", null ],
-      [ "Attribution", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md13", null ]
+      [ "Our Pledge", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md9", null ],
+      [ "Our Standards", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md10", null ],
+      [ "Our Responsibilities", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md11", null ],
+      [ "Scope", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md12", null ],
+      [ "Enforcement", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md13", null ],
+      [ "Attribution", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md14", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
