@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sim800l_20soldered_20arduino_20library_0',['SIM800L Soldered Arduino library',['../index.html',1,'']]]
+  ['gsm_20communications_20sim800_20breakout_20arduino_20library_0',['GSM communications SIM800 breakout Arduino library',['../index.html',1,'']]]
 ];
