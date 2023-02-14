@@ -25,9 +25,7 @@
 var NAVTREE =
 [
   [ "SIM800L Arduino Library by Soldered", "index.html", [
-    [ "GSM communications SIM800 breakout Arduino library", "index.html", [
-      [ "Have fun!", "index.html#autotoc_md8", null ]
-    ] ],
+    [ "GSM communications SIM800 breakout Arduino library", "index.html", "index" ],
     [ "Contributor Covenant Code of Conduct", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html", [
       [ "Our Pledge", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md10", null ],
       [ "Our Standards", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md11", null ],
