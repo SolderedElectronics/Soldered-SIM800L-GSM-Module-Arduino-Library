@@ -37,11 +37,9 @@
  *        Email: charlesayibiowu@hotmail.com
  *        Version: v1.2
  *
- *		?????????????????????????????????????????????????
- *		Updates:
- *		SoftwareSerial upgraded to AltSoftSerial to support compartibility with other PinChange Interrupt Library
- *		and SPI based Library.
  *
+ * 
+ *  Modified by Soldered, 22 March 2023
  */
 
 
@@ -49,16 +47,16 @@
 #define BareBoneSim800_h
 
 #ifdef __AVR__
-#include "AltSoftSerial.h"
+#ifdef ARDUINO_AVR_ATtiny1604
+#include <SoftwareSerial.h>
+#else
+#include "NeoSWSerial.h"
+#endif
 #else
 #include "../espsoftwareserial/src/SoftwareSerial.h"
 #endif
 
 #include "Arduino.h"
-
-#define RX_PIN    8 // not needed since the AltSoftSerial has already define it inside
-#define TX_PIN    9
-#define RESET_PIN 2 // pin to reset not currently used is this version
 
 #define TIMEOUT          99
 #define ERROR            0
@@ -88,6 +86,7 @@ class BareBoneSim800
     const char *_responseInfo[_responseInfoSize] = {"ERROR",        "NOT READY",       "READY",   "CONNECT OK",
                                                     "CONNECT FAIL", "ALREADY CONNECT", "SEND OK", "SEND FAIL",
                                                     "DATA ACCEPT",  "CLOSED",          ">",       "OK"};
+    int _txPin = 9, _rxPin = 8; // Dasduino pins for software serial
 
 
     // some private function
@@ -104,6 +103,7 @@ class BareBoneSim800
   public:
     BareBoneSim800();
     BareBoneSim800(const char *networkAPN);
+    BareBoneSim800(int txPin, int rxPin);
     BareBoneSim800(const char *networkAPN, const char *userName, const char *passWord);
 
     volatile int previousMessageIndex = 0; // stores the last read message index
@@ -113,6 +113,7 @@ class BareBoneSim800
     void begin();
     bool isAttached();
     void flushSerial(uint16_t timeout);
+    void setPins(int txPin, int rxPin); // for setting tx and rx pins when using other constructors
 
 
     bool setFullMode();

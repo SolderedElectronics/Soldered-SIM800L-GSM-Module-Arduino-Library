@@ -18,6 +18,22 @@
 
 class SIM800L : public BareBoneSim800
 {
+  public:
+    SIM800L() : BareBoneSim800()
+    {
+    }
+
+    SIM800L(const char *networkAPN) : BareBoneSim800(networkAPN)
+    {
+    }
+
+    SIM800L(const char *networkAPN, const char *userName, const char *passWord) : BareBoneSim800(networkAPN, userName,passWord)
+    {
+    }
+
+    SIM800L(int txPin, int rxPin) : BareBoneSim800(txPin, rxPin)
+    {
+    }
 };
 
 #undef BareBoneSim800

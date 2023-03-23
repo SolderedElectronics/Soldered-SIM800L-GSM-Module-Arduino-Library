@@ -17,10 +17,10 @@
  *    #define DEBUG 0 to #define DEBUG 1
  *
  *    PINOUT:
- *        _____________________________
- *       |  ARDUINO UNO >>>   SIM800L  |
- *        -----------------------------
- *            GND      >>>   GND
+ *        ___________________________
+ *       |  Dasduino  >>>   SIM800L  |
+ *        ---------------------------
+ *            GND     >>>   GND
  *        RX  8       >>>   TX
  *        TX  9       >>>   RX
  *
@@ -32,7 +32,7 @@
  *        Email: charlesayibiowu@hotmail.com
  *        Version: v1.2
  *
- *
+ *  Modified by Soldered, 22 March 2023
  */
 
 #include "BareBoneSim800.h"
@@ -42,6 +42,12 @@
 // Initialize the constructors
 BareBoneSim800::BareBoneSim800()
 {
+}
+
+BareBoneSim800::BareBoneSim800(int txPin, int rxPin)
+{
+    _txPin = rxPin; // rx from breakout goes to the tx on Dasduino
+    _rxPin = txPin;
 }
 
 BareBoneSim800::BareBoneSim800(const char *networkAPN)
@@ -58,10 +64,16 @@ BareBoneSim800::BareBoneSim800(const char *networkAPN, const char *userName, con
     _passWord = passWord;
 }
 
-#ifdef __AVR__
-AltSoftSerial gsmSerial;
+void BareBoneSim800::setPins(int txPin, int rxPin)
+{
+    _txPin = rxPin; // rx from breakout goes to the tx on Dasduino
+    _rxPin = txPin;
+}
+
+#if defined(__AVR__) && !defined(ARDUINO_AVR_ATtiny1604)
+NeoSWSerial *gsmSerial;
 #else
-SoftwareSerial gsmSerial(9, 8);
+SoftwareSerial *gsmSerial;
 #endif
 
 // f (receiveHandler) {
@@ -78,32 +90,36 @@ byte BareBoneSim800::_checkResponse(uint16_t timeout)
     while (millis() < t + timeout)
     {
         // count++;
-        if (gsmSerial.available()) // check if the device is sending a message
+        if (gsmSerial->available()) // check if the device is sending a message
         {
-            String tempData = gsmSerial.readString(); // reads the response
+
+#ifdef ARDUINO_AVR_ATtiny1604
+            char temp[256];
+            int i = 0;
+            while (gsmSerial->available())
+            {
+                temp[i] = gsmSerial->read();
+                i++;
+            }
+            temp[i] = 0;
+#else
+            String tempData = gsmSerial->readString(); // reads the response
+            char *temp = strdup(tempData.c_str());     // convertss to char data from
+#endif
+
             if (DEBUG)
-                Serial.println(tempData);
-            char *mydataIn = strdup(tempData.c_str()); // convertss to char data from
+                Serial.println(temp);
 
             /*
              * Checks for the status response
              * Response are - OK, ERROR, READY, >, CONNECT OK
              * SEND OK, DATA ACCEPT, SEND FAIL, CLOSE, CLOSED
              * note_ LOCAL iP COMMANDS HAS NO ENDING RESPONSE
-             * ERROR - 0
-             * READY - 1
-             * CONNECT OK - 2
-             * SEND OK - 3
-             * SEND FAIL - 4
-             * CLOSED - 5
-             * > - 6
-             * OK - 7
-             *
-             *
              */
+
             for (byte i = 0; i < _responseInfoSize; i++)
             {
-                if ((strstr(mydataIn, _responseInfo[i])) != NULL)
+                if ((strstr(temp, _responseInfo[i])) != NULL)
                 {
                     Status = i;
                     return Status;
@@ -119,14 +135,14 @@ String BareBoneSim800::_readData()
 {
     // this function just reads the raw data
     uint16_t timeout = 0;
-    while (!gsmSerial.available() && timeout < 10000)
+    while (!gsmSerial->available() && timeout < 10000)
     {
         delay(10);
         timeout++;
     }
-    if (gsmSerial.available())
+    if (gsmSerial->available())
     {
-        String output = gsmSerial.readString();
+        String output = gsmSerial->readString();
         if (DEBUG)
             Serial.println(output);
         return output;
@@ -142,10 +158,11 @@ int BareBoneSim800::_getLatestMessageIndex()
     String bufferIndex = "";
     int messageIndex = 0;
     int tempIndex = 0;
-    gsmSerial.print(F("AT+CMGL=\"ALL\",0"));
-    gsmSerial.print("\r");
+    gsmSerial->print(F("AT+CMGL=\"ALL\",0"));
+    gsmSerial->print("\r");
     buffer = _readData(); // reads the result
     tempIndex = buffer.lastIndexOf("+CMGL:");
+
     if (tempIndex != -1)
     {
         // means message is found
@@ -162,10 +179,10 @@ int BareBoneSim800::_getLatestMessageIndex()
 void BareBoneSim800::_setUp()
 {
     // here we setup some important parameters
-    gsmSerial.print(F("AT+CSCS=\"GSM\"\r\n"));
+    gsmSerial->print(F("AT+CSCS=\"GSM\"\r\n"));
     byte someBuffer = _checkResponse(10000); // just to clear the buffer
     delay(100);
-    gsmSerial.print(F("AT+CMGF=1\r"));
+    gsmSerial->print(F("AT+CMGF=1\r"));
     byte result = _checkResponse(10000);
     // here we save the latest message index here
     currentMessageIndex = _getLatestMessageIndex();
@@ -176,28 +193,28 @@ void BareBoneSim800::_enableBearerProfile()
 {
     // This function enable and set the bearer profile for time, location and GPRS service
     String buffer;
-    gsmSerial.print(F("AT+SAPBR=3,1,\"CONTYPE\",\"GPRS\"\r\n"));
+    gsmSerial->print(F("AT+SAPBR=3,1,\"CONTYPE\",\"GPRS\"\r\n"));
     buffer = _readData(); // set bearer parameter
     delay(100);
-    gsmSerial.print(F("AT+SAPBR=3,1,\"APN\",\""));
-    gsmSerial.print(_networkAPN);
-    gsmSerial.print(F("\"\r\n")); // set apn
+    gsmSerial->print(F("AT+SAPBR=3,1,\"APN\",\""));
+    gsmSerial->print(_networkAPN);
+    gsmSerial->print(F("\"\r\n")); // set apn
     buffer = _readData();
     delay(20);
-    gsmSerial.print(F("AT+SAPBR=3,1,\"USER\",\""));
-    gsmSerial.print(_userName);
-    gsmSerial.print(F("\"\r\n")); // set username
+    gsmSerial->print(F("AT+SAPBR=3,1,\"USER\",\""));
+    gsmSerial->print(_userName);
+    gsmSerial->print(F("\"\r\n")); // set username
     buffer = _readData();
     delay(20);
-    gsmSerial.print(F("AT+SAPBR=3,1,\"PWD\",\""));
-    gsmSerial.print(_passWord);
-    gsmSerial.print(F("\"\r\n")); // set password
+    gsmSerial->print(F("AT+SAPBR=3,1,\"PWD\",\""));
+    gsmSerial->print(_passWord);
+    gsmSerial->print(F("\"\r\n")); // set password
     buffer = _readData();
     delay(20);
-    gsmSerial.print(F("AT+SAPBR=1,1\r\n")); // activate bearer context
+    gsmSerial->print(F("AT+SAPBR=1,1\r\n")); // activate bearer context
     buffer = _readData();
     delay(100);
-    gsmSerial.print(F("AT+SAPBR=2,1\r\n ")); // get context ip address
+    gsmSerial->print(F("AT+SAPBR=2,1\r\n ")); // get context ip address
     buffer = _readData();
     delay(1000);
 }
@@ -205,21 +222,29 @@ void BareBoneSim800::_enableBearerProfile()
 void BareBoneSim800::_disableBearerProfile()
 {
     // Disables the bearer profile
-    gsmSerial.print(F("AT+SAPBR=0,1\r\n"));
+    gsmSerial->print(F("AT+SAPBR=0,1\r\n"));
 
     byte result = _checkResponse(20000);
     // String _buffer = _readData();
     delay(100);
 }
 
+
 // PUBLIC METHODS
 void BareBoneSim800::begin()
 {
-    gsmSerial.begin(4800);
+#if defined(__AVR__) && !defined(ARDUINO_AVR_ATtiny1604)
+    gsmSerial = new NeoSWSerial(_rxPin, _txPin);
+#else
+    gsmSerial = new SoftwareSerial(_rxPin, _txPin);
+#endif
+
+    gsmSerial->begin(9600);
     // I should clear the buffer just incase
-    //_flushSerial(1000);
+    flushSerial(1000);
     byte result = _checkResponse(1000); // this will flush the serial
 }
+
 
 //*******CHecks if the GSM Module is attached **********/
 bool BareBoneSim800::isAttached()
@@ -227,7 +252,7 @@ bool BareBoneSim800::isAttached()
     byte result;
     // sends a test AT command, if attached we should get an OK response
     // if attached we should get an OK response
-    gsmSerial.print(F("AT\r\n"));
+    gsmSerial->print(F("AT\r\n"));
     result = _checkResponse(1000); // timeout of 1 secs
     if (result != OK)
         return false;
@@ -243,9 +268,9 @@ void BareBoneSim800::flushSerial(uint16_t timeout)
     String output;
     while (millis() < t + timeout)
     {
-        if (gsmSerial.available())
+        if (gsmSerial->available())
         {
-            output = gsmSerial.readString();
+            output = gsmSerial->readString();
             output = "";
             break;
         }
@@ -256,7 +281,7 @@ bool BareBoneSim800::setFullMode()
 {
     // This set the device to full funcionality - AT+CFUN
     bool nowReady = false;
-    gsmSerial.print(F("AT+CFUN=1\r\n"));
+    gsmSerial->print(F("AT+CFUN=1\r\n"));
     // Let's confirm if this was valid
     byte result = _checkResponse(20000); // timeout 10s
     if (result == OK || result == READY)
@@ -273,7 +298,7 @@ bool BareBoneSim800::setFullMode()
 bool BareBoneSim800::enterSleepMode()
 {
     // This set the device into a good sleep mode - AT+CFUN=0 and AT+CSCLK
-    gsmSerial.print(F("AT+CFUN=0\r\n"));
+    gsmSerial->print(F("AT+CFUN=0\r\n"));
     byte result = _checkResponse(10000);
     if (result != NOT_READY)
         return false;
@@ -284,7 +309,7 @@ bool BareBoneSim800::enterSleepMode()
     if (result != OK)
         return false;
     delay(50);
-    gsmSerial.print(F("AT+CSCLK=2\r\n")); // enable automatic sleep
+    gsmSerial->print(F("AT+CSCLK=2\r\n")); // enable automatic sleep
     result = _checkResponse(20000);
     if (result != OK)
         return false;
@@ -296,10 +321,10 @@ bool BareBoneSim800::disableSleep()
 {
     // This mode disable sleep mode - AT+CSLK=0
     // first we need to send something random for as long as 100ms
-    gsmSerial.print(F("FF\r"));
+    gsmSerial->print(F("FF\r"));
     delay(120);                         // this is between waking charaters and next AT commands
     byte result = _checkResponse(1000); // just incase something pops up
-    gsmSerial.print(F("AT+CSCLK=0\r\n"));
+    gsmSerial->print(F("AT+CSCLK=0\r\n"));
     result = _checkResponse(20000);
     if (result != OK)
         return false;
@@ -319,21 +344,21 @@ bool BareBoneSim800::sendSMS(const char *number, char *text)
     OK
     */
     byte result;
-    gsmSerial.print(F("AT+CMGF=1\r\n")); // set sms to text mode
+    gsmSerial->print(F("AT+CMGF=1\r\n")); // set sms to text mode
     result = _checkResponse(10000);
     if (result == ERROR)
         return false; // this just end the function here
     delay(1000);
-    gsmSerial.print(F("AT+CMGS=\"")); // command to send sms
-    gsmSerial.print(number);
-    gsmSerial.print(F("\"\r\n"));
+    gsmSerial->print(F("AT+CMGS=\"")); // command to send sms
+    gsmSerial->print(number);
+    gsmSerial->print(F("\"\r\n"));
     result = _checkResponse(60000); // to clear buffer and see if successful
     if (result == READY_TO_RECEIVE)
     {
-        gsmSerial.print(text);
-        gsmSerial.print("\r");
+        gsmSerial->print(text);
+        gsmSerial->print("\r");
         result = _checkResponse(1000);
-        gsmSerial.print((char)26);
+        gsmSerial->print((char)26);
         result = _checkResponse(20000);
         // if successfully sent we should get CMGS:xxx ending with OK
         if (result == OK)
@@ -348,13 +373,13 @@ bool BareBoneSim800::sendSMS(const char *number, char *text)
 String BareBoneSim800::readSMS(uint8_t index)
 {
     String buffer = "";
-    gsmSerial.print(F("AT+CMGF=1\r"));
+    gsmSerial->print(F("AT+CMGF=1\r"));
     byte result = _checkResponse(10000);
     if (result == OK)
     {
-        gsmSerial.print(F("AT+CMGR="));
-        gsmSerial.print(index);
-        gsmSerial.print("\r");
+        gsmSerial->print(F("AT+CMGR="));
+        gsmSerial->print(index);
+        gsmSerial->print("\r");
         buffer = _readData(); // reads the result
         if (buffer.indexOf("CMGR:") != -1)
         {
@@ -372,8 +397,8 @@ String BareBoneSim800::readSIMNumber()
 {
     // This function reads the simcard registered number
     String buffer = "";
-    gsmSerial.print(F("AT+CNUM"));
-    gsmSerial.print("\r");
+    gsmSerial->print(F("AT+CNUM"));
+    gsmSerial->print("\r");
     buffer = _readData(); // reads the result
     if (buffer.indexOf("+CNUM:") != -1)
     {
@@ -404,8 +429,8 @@ bool BareBoneSim800::dellAllSMS()
 
     */
     byte result;
-    gsmSerial.print(F("AT+CMGDA=\"DEL ALL\"\r\n")); // set sms to text mode
-    result = _checkResponse(25000);                 // max time to wait is 25secs
+    gsmSerial->print(F("AT+CMGDA=\"DEL ALL\"\r\n")); // set sms to text mode
+    result = _checkResponse(25000);                  // max time to wait is 25secs
     if (result == OK)
     {
         previousMessageIndex = 0;
@@ -421,7 +446,7 @@ String BareBoneSim800::getTime()
     // This function is for get time & date from the network
     // first enable the bearer profile
     _enableBearerProfile();
-    gsmSerial.print(F("AT+CIPGSMLOC=2,1\r\n"));
+    gsmSerial->print(F("AT+CIPGSMLOC=2,1\r\n"));
     String _buffer = _readData();
     // Serial.println("sasd");
     delay(10);
@@ -442,7 +467,7 @@ String BareBoneSim800::getLocation()
     // this function is used for approximating the location for the device
     // first enable the bearer profile
     _enableBearerProfile();
-    gsmSerial.print(F("AT+CIPGSMLOC=1,1\r\n"));
+    gsmSerial->print(F("AT+CIPGSMLOC=1,1\r\n"));
     String _buffer = _readData();
     delay(10);
     _buffer = _readData(); // This second read should work out
@@ -464,7 +489,7 @@ byte BareBoneSim800::getBattPercent()
     //+CBC: 0,100,4208
 
     String buffer;
-    gsmSerial.print(F("AT+CBC\r\n"));
+    gsmSerial->print(F("AT+CBC\r\n"));
     buffer = _readData();
     String buffer2 = buffer.substring(buffer.indexOf(",") + 1);
     return buffer2.substring(0, buffer2.indexOf(",")).toInt(); // converts the result to interger
@@ -477,12 +502,12 @@ This Section Focuses on the GPRS connectivitiy
 bool BareBoneSim800::gprsDisconnect()
 {
     // This function disconnect the GPRS
-    gsmSerial.print(F("AT+CIPSHUT\r\n"));
+    gsmSerial->print(F("AT+CIPSHUT\r\n"));
     byte result = _checkResponse(65000);
     if (result != OK)
         return false;
     delay(30);
-    gsmSerial.print(F("AT+CGATT=0\r\n"));
+    gsmSerial->print(F("AT+CGATT=0\r\n"));
     result = _checkResponse(65000);
     if (result != OK)
         return false;
@@ -498,35 +523,35 @@ bool BareBoneSim800::gprsConnect()
     String buffer;
     _enableBearerProfile(); // Activate the GPRS connectivity
     // attach the GPRS service
-    gsmSerial.print(F("AT+CGATT=1\r\n"));
+    gsmSerial->print(F("AT+CGATT=1\r\n"));
     byte result = _checkResponse(20000);
     delay(20);
     if (result != OK)
         return false;
 
-    gsmSerial.print(F("AT+CIPMUX=0\r\n"));
+    gsmSerial->print(F("AT+CIPMUX=0\r\n"));
     result = _checkResponse(10000);
     if (result != OK)
         return false;
     delay(10);
-    gsmSerial.print(F("AT+CSTT=\""));
-    gsmSerial.print(_networkAPN);
-    gsmSerial.print(F("\",\""));
-    gsmSerial.print(_userName);
-    gsmSerial.print(F("\",\""));
-    gsmSerial.print(_passWord);
-    gsmSerial.print(F("\"\r\n")); //
+    gsmSerial->print(F("AT+CSTT=\""));
+    gsmSerial->print(_networkAPN);
+    gsmSerial->print(F("\",\""));
+    gsmSerial->print(_userName);
+    gsmSerial->print(F("\",\""));
+    gsmSerial->print(_passWord);
+    gsmSerial->print(F("\"\r\n")); //
 
     result = _checkResponse(60000);
     if (result != OK)
         return false;
     delay(10);
-    gsmSerial.print(F("AT+CIICR\r\n"));
+    gsmSerial->print(F("AT+CIICR\r\n"));
     result = _checkResponse(85000);
     if (result != OK)
         return false;
     delay(10);
-    gsmSerial.print(F("AT+CIFSR\r\n"));
+    gsmSerial->print(F("AT+CIFSR\r\n"));
     result = _checkResponse(5000); // this basically change to IP STATUS
     // but at the stage I believe IP will already be available
     return true;
@@ -536,30 +561,30 @@ String BareBoneSim800::sendHTTPData(char *data)
 {
     // This function performs HTTP Client
     byte result;
-    gsmSerial.print(F("AT+HTTPINIT\r\n"));
+    gsmSerial->print(F("AT+HTTPINIT\r\n"));
     result = _checkResponse(10000);
     if (result != OK)
         return "";
     delay(5);
-    gsmSerial.print(F("AT+HTTPPARA=\"CID\",1\r\n"));
+    gsmSerial->print(F("AT+HTTPPARA=\"CID\",1\r\n"));
     result = _checkResponse(10000);
     if (result != OK)
         return "";
     delay(5);
-    gsmSerial.print(F("AT+HTTPPARA=\"URL\","));
-    gsmSerial.print(data);
-    gsmSerial.print(F("\r\n"));
+    gsmSerial->print(F("AT+HTTPPARA=\"URL\","));
+    gsmSerial->print(data);
+    gsmSerial->print(F("\r\n"));
     result = _checkResponse(10000);
     if (result != OK)
         return "";
     delay(5);
-    gsmSerial.print(F("AT+HTTPACTION=0\r\n"));
+    gsmSerial->print(F("AT+HTTPACTION=0\r\n"));
     result = _checkResponse(100000);
     // if(result != OK)
     //	return "";
     delay(10);
     result = _checkResponse(20000);
-    gsmSerial.print(F("AT+HTTPREAD\r\n"));
+    gsmSerial->print(F("AT+HTTPREAD\r\n"));
     String buffer = _readData();
     delay(50);
     return buffer;
@@ -568,7 +593,7 @@ String BareBoneSim800::sendHTTPData(char *data)
 void BareBoneSim800::closeHTTP()
 {
     // This close the TCP connection
-    gsmSerial.print("AT+HTTPTERM\r\n");
+    gsmSerial->print("AT+HTTPTERM\r\n");
     byte result = _checkResponse(10000);
     delay(30);
 }
