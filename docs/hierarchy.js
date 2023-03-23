@@ -66,8 +66,9 @@ var hierarchy =
       [ "delegate::detail::MultiDelegate< Delegate, void(P...), ISQUEUE, QUEUE_CAPACITY >", "classdelegate_1_1detail_1_1_multi_delegate_3_01_delegate_00_01void_07_p_8_8_8_08_00_01_i_s_q_u_e977e230ef1939d4be6845cd824f88d38.html", null ]
     ] ],
     [ "delegate::detail::MultiDelegatePImpl< Delegate, R, ISQUEUE, QUEUE_CAPACITY, P >::Node_t", "structdelegate_1_1detail_1_1_multi_delegate_p_impl_1_1_node__t.html", null ],
+    [ "rbd_t", "structrbd__t.html", null ],
     [ "Stream", null, [
-      [ "AltSoftSerial", "class_alt_soft_serial.html", null ]
+      [ "NeoSWSerial", "class_neo_s_w_serial.html", null ]
     ] ],
     [ "std::unique_ptr< T >", "classstd_1_1unique__ptr.html", null ],
     [ "std::unique_ptr< T[]>", "classstd_1_1unique__ptr.html", null ]

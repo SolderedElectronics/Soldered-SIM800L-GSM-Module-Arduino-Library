@@ -2,6 +2,7 @@ var class_bare_bone_sim800 =
 [
     [ "BareBoneSim800", "class_bare_bone_sim800.html#ac9dbe7bd06c7cad654bcda84b42f1b45", null ],
     [ "BareBoneSim800", "class_bare_bone_sim800.html#a9d036b7512a9368652f3de7ba0386830", null ],
+    [ "BareBoneSim800", "class_bare_bone_sim800.html#a3cedc743ca03dab739acec10e8b29a64", null ],
     [ "BareBoneSim800", "class_bare_bone_sim800.html#a3272881fa8fda2d9737e8a162f22f008", null ],
     [ "_checkResponse", "class_bare_bone_sim800.html#ad67c3a35e42da034e554798f731f52a4", null ],
     [ "_disableBearerProfile", "class_bare_bone_sim800.html#a7c999ba668e30acba2c1e404c176a68a", null ],
@@ -27,10 +28,13 @@ var class_bare_bone_sim800 =
     [ "sendHTTPData", "class_bare_bone_sim800.html#a07d436f4fc12d5975de77d1898890276", null ],
     [ "sendSMS", "class_bare_bone_sim800.html#abc76a40747bc340c315a7c335afe05e2", null ],
     [ "setFullMode", "class_bare_bone_sim800.html#a42c0db9640a51a60c4a957e76911691c", null ],
+    [ "setPins", "class_bare_bone_sim800.html#abfe81ddfaba14df53a3ce44f56d37b05", null ],
     [ "_networkAPN", "class_bare_bone_sim800.html#a0dd74e7b1b495f6de5a11f64faae4d8f", null ],
     [ "_passWord", "class_bare_bone_sim800.html#a494ece0ba1abb4577e9c7ade210c4bc5", null ],
     [ "_responseInfo", "class_bare_bone_sim800.html#abc2a5828004c2a207f6f1227edc0d6ca", null ],
     [ "_responseInfoSize", "class_bare_bone_sim800.html#a392955d93b2536cd0f2cbc4a90a81edd", null ],
+    [ "_rxPin", "class_bare_bone_sim800.html#a1dab28820f3ff61c0a541bc77a1d460f", null ],
+    [ "_txPin", "class_bare_bone_sim800.html#a8d49690b145fce59e06f82145a2beace", null ],
     [ "_userName", "class_bare_bone_sim800.html#ae0b0c021f6f1b5a39ae22fa8edcf57c1", null ],
     [ "currentMessageIndex", "class_bare_bone_sim800.html#ad283f5eb4050cd3d2b3f02990d7e207a", null ],
     [ "previousMessageIndex", "class_bare_bone_sim800.html#af4dbcf27de4f92001fac2efe995b5002", null ]

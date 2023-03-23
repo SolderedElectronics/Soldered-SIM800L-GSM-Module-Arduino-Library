@@ -27,7 +27,6 @@ var annotated_dup =
       [ "identity", "structstd_1_1identity.html", "structstd_1_1identity" ],
       [ "unique_ptr", "classstd_1_1unique__ptr.html", "classstd_1_1unique__ptr" ]
     ] ],
-    [ "AltSoftSerial", "class_alt_soft_serial.html", "class_alt_soft_serial" ],
     [ "BareBoneSim800", "class_bare_bone_sim800.html", "class_bare_bone_sim800" ],
     [ "circular_queue", "classcircular__queue.html", "classcircular__queue" ],
     [ "circular_queue_mp", "classcircular__queue__mp.html", "classcircular__queue__mp" ],
@@ -36,5 +35,7 @@ var annotated_dup =
     [ "Delegate< R(P...)>", "class_delegate_3_01_r_07_p_8_8_8_08_4.html", "class_delegate_3_01_r_07_p_8_8_8_08_4" ],
     [ "InterruptLock", "class_interrupt_lock.html", "class_interrupt_lock" ],
     [ "MultiDelegate", "class_multi_delegate.html", null ],
-    [ "SIM800L", "class_s_i_m800_l.html", null ]
+    [ "NeoSWSerial", "class_neo_s_w_serial.html", "class_neo_s_w_serial" ],
+    [ "rbd_t", "structrbd__t.html", "structrbd__t" ],
+    [ "SIM800L", "class_s_i_m800_l.html", "class_s_i_m800_l" ]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pointer_0',['pointer',['../classstd_1_1unique__ptr.html#ad4aad093d8bb0cf9f045e21101ef3c23',1,'std::unique_ptr']]]
+  ['nullptr_5ft_0',['nullptr_t',['../namespacestd.html#a3b77ddce6fb5d2c9de08f0d112a8337e',1,'std']]]
 ];

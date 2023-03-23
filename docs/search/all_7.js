@@ -7,6 +7,6 @@ var searchData=
   ['ghostl_2eh_4',['ghostl.h',['../ghostl_8h.html',1,'']]],
   ['gprsconnect_5',['gprsConnect',['../class_bare_bone_sim800.html#ac6a31970a6e1211c7bd5dcd3f172250f',1,'BareBoneSim800']]],
   ['gprsdisconnect_6',['gprsDisconnect',['../class_bare_bone_sim800.html#ad2c303c2952651e8ef348125c7751e4b',1,'BareBoneSim800']]],
-  ['gsm_20communications_20sim800_20breakout_20arduino_20library_7',['GSM communications SIM800 breakout Arduino library',['../index.html',1,'']]],
-  ['gsmserial_8',['gsmSerial',['../_bare_bone_sim800_8cpp.html#a485da13ae5c9e01b4143a710571d434f',1,'gsmSerial():&#160;BareBoneSim800.cpp'],['../_bare_bone_sim800_8cpp.html#a3a55a16802d084d625d2ce8a7fbce147',1,'gsmSerial(9, 8):&#160;BareBoneSim800.cpp']]]
+  ['gsm_20communications_20sim800l_20breakout_20arduino_20library_7',['GSM communications SIM800L breakout Arduino library',['../index.html',1,'']]],
+  ['gsmserial_8',['gsmSerial',['../_bare_bone_sim800_8cpp.html#a73790867390bfc0ca65df78537e3de3b',1,'BareBoneSim800.cpp']]]
 ];

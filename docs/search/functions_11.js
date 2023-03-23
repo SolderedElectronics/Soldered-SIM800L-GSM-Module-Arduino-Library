@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['write_0',['write',['../class_alt_soft_serial.html#ac03cfb05e51857649e63cde5c5a49dbc',1,'AltSoftSerial::write(uint8_t byte)'],['../class_alt_soft_serial.html#a9028b5cc2347da02a731f4fe065ddd49',1,'AltSoftSerial::write(uint8_t byte)']]],
-  ['writebyte_1',['writeByte',['../class_alt_soft_serial.html#ace65ea46e491a4a5ea61492ceb95c56c',1,'AltSoftSerial']]]
+  ['vptrtofunaptrexec_0',['vPtrToFunAPtrExec',['../classdelegate_1_1detail_1_1_delegate_p_impl.html#a2ad3b4ade98db3141e00e3868592447f',1,'delegate::detail::DelegatePImpl::vPtrToFunAPtrExec(void *self, P... args)'],['../classdelegate_1_1detail_1_1_delegate_p_impl.html#a2ad3b4ade98db3141e00e3868592447f',1,'delegate::detail::DelegatePImpl::vPtrToFunAPtrExec(void *self, P... args)'],['../classdelegate_1_1detail_1_1_delegate_impl.html#a84a6393d9da9dc981c67252cb6a211bb',1,'delegate::detail::DelegateImpl::vPtrToFunAPtrExec(void *self)'],['../classdelegate_1_1detail_1_1_delegate_impl.html#a84a6393d9da9dc981c67252cb6a211bb',1,'delegate::detail::DelegateImpl::vPtrToFunAPtrExec(void *self)']]]
 ];

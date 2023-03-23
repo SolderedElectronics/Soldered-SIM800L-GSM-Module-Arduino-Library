@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['write_0',['write',['../class_alt_soft_serial.html#ac03cfb05e51857649e63cde5c5a49dbc',1,'AltSoftSerial::write(uint8_t byte)'],['../class_alt_soft_serial.html#a9028b5cc2347da02a731f4fe065ddd49',1,'AltSoftSerial::write(uint8_t byte)']]],
-  ['writebyte_1',['writeByte',['../class_alt_soft_serial.html#ace65ea46e491a4a5ea61492ceb95c56c',1,'AltSoftSerial']]]
+  ['waiting_5ffor_5fstart_5fbit_0',['WAITING_FOR_START_BIT',['../_neo_s_w_serial_8cpp.html#a487b354255a51aa0c588c7107b87d755',1,'NeoSWSerial.cpp']]],
+  ['write_1',['write',['../class_neo_s_w_serial.html#a056b05d1593df4b32b62c9fb9ded20a8',1,'NeoSWSerial']]]
 ];

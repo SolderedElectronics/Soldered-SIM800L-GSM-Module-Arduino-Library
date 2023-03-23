@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "SIM800L Arduino Library by Soldered", "index.html", [
-    [ "GSM communications SIM800 breakout Arduino library", "index.html", "index" ],
+    [ "GSM communications SIM800L breakout Arduino library", "index.html", "index" ],
     [ "Contributor Covenant Code of Conduct", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html", [
       [ "Our Pledge", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md10", null ],
       [ "Our Standards", "md_src_libs__bare_bone_sim800__c_o_d_e__o_f__c_o_n_d_u_c_t.html#autotoc_md11", null ],
@@ -72,11 +72,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_alt_soft_serial_8cpp.html",
-"classdelegate_1_1detail_1_1_delegate.html#a73fe57d8c8cba475612c7c96d8aa05e0",
-"classdelegate_1_1detail_1_1_delegate_impl.html#a7e5c4832b2de801e79a5814ae034b120",
-"classdelegate_1_1detail_1_1_delegate_p_impl_3_01void_00_01_r_00_01_p_8_8_8_01_4.html#a116d9df623d2382774c9f07d1a478061",
-"functions_l.html"
+"_alt_soft_serial___boards_8h.html",
+"classcircular__queue__mp.html#a1bb45a1e07b90b2f4ee531fbcc192bb3",
+"classdelegate_1_1detail_1_1_delegate_impl.html#a0d9ddf8a266483798a7db60699bd536b",
+"classdelegate_1_1detail_1_1_delegate_p_impl.html#abb421b388060c4565062eb5bc5085664",
+"dir_81e044dd82a51c180aad00dfae99855b.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
