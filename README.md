@@ -6,8 +6,6 @@
 | :----------------------------------------------------------------------------------------------------------: |
 |                      [GSM communications SIM800 breakout](https://www.solde.red/333071)                      |
 
-GSM communications SIM800L breakout compliant to [easyC ecosystem](https://www.soldered.com/en/easyC).
-
 
 
 ### Repository Contents
