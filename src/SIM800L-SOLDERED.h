@@ -27,7 +27,8 @@ class SIM800L : public BareBoneSim800
     {
     }
 
-    SIM800L(const char *networkAPN, const char *userName, const char *passWord) : BareBoneSim800(networkAPN, userName,passWord)
+    SIM800L(const char *networkAPN, const char *userName, const char *passWord)
+        : BareBoneSim800(networkAPN, userName, passWord)
     {
     }
 
