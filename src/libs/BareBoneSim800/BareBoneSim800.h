@@ -115,7 +115,6 @@ class BareBoneSim800
     void flushSerial(uint16_t timeout);
     void setPins(int txPin, int rxPin); // for setting tx and rx pins when using other constructors
 
-
     bool setFullMode();
     bool enterSleepMode();
     bool disableSleep();
@@ -125,6 +124,11 @@ class BareBoneSim800
     String readSIMNumber();        // reads the sim registered number
     bool checkNewSMS();            // checks for new sms
     bool dellAllSMS();             // deletes all sms
+
+    bool makeCall(const char *number);
+    void hangUpCall();
+    bool incomingCall ();
+    void answerCall();
 
     String getTime();      // return time of the network
     String getLocation();  // return location of device

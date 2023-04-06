@@ -12,7 +12,7 @@
  *    charlesayibiowu@hotmail.com
  *    Designed to work with the GSM Sim800l module
  *
- *    To Enable Debugging - Go to <BareBoneSim800.h file and change the
+ *    To Enable Debugging - Go to BareBoneSim800.h file and change the
  *    #define DEBUG 0 to #define DEBUG 1
  *
  *    PINOUT:
@@ -27,21 +27,21 @@
  *    You can change RX and TX pins callilng setPins() function before begin(), these are the default ones.
  *
  *
- *   Modified by: soldered.com, 21 March 2023
- *   See more at https://www.solde.red/333071
- *
  * @authors     Created on: Oct 24, 2017
  *              Author: Ayo Ayibiowu
  *              Email: charlesayibiowu@hotmail.com
  *              Version: v1.0
+ * 
+ *   Modified by: soldered.com, 21 March 2023
+ *   See more at https://www.solde.red/333071
  ***************************************************/
 
+// Include soldered library sof SIM800L breakout
 #include "SIM800L-SOLDERED.h"
 
 SIM800L sim800("internet.ht.hr"); // To declare the library with an APN
-// SIM800L sim800("gloworld");
 // When using constructors without pins, call setPins() with your pins. Default are 8 and 9
-// Use setPin() before begin() function!
+// Use setPins() before begin() function!
 
 // Connecting to the Internet and Acting as an HTTP Web Client
 // username and password has been set to "" in the Library Code
@@ -52,12 +52,14 @@ const int port = 80;
 void setup()
 {
     Serial.begin(115200); // Start serial communication with PC using 115200 baudrate
+    // If you use Dasduino Lite, the pins are in the format "PAx", e.g. PA2, PA3
+    sim800.setpins(8, 9); // Set any other TX and RX pins
     sim800.begin();       // Initialize sim800 module
     while (!Serial)       // Wait until serial is available
         ;
 
     Serial.println("Testing GSM module For GPRS Connectivity");
-    delay(8000); // this delay is necessary, it helps the device to be ready and connect to a network
+    delay(8000); // This delay is necessary, it helps the device to be ready and connect to a network
 
     Serial.println("Should be ready by now");
     bool deviceAttached = sim800.isAttached(); // Check if sim800 is connected
