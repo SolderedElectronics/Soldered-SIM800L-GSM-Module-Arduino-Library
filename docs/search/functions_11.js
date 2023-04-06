@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vptrtofunaptrexec_0',['vPtrToFunAPtrExec',['../classdelegate_1_1detail_1_1_delegate_p_impl.html#a2ad3b4ade98db3141e00e3868592447f',1,'delegate::detail::DelegatePImpl::vPtrToFunAPtrExec(void *self, P... args)'],['../classdelegate_1_1detail_1_1_delegate_p_impl.html#a2ad3b4ade98db3141e00e3868592447f',1,'delegate::detail::DelegatePImpl::vPtrToFunAPtrExec(void *self, P... args)'],['../classdelegate_1_1detail_1_1_delegate_impl.html#a84a6393d9da9dc981c67252cb6a211bb',1,'delegate::detail::DelegateImpl::vPtrToFunAPtrExec(void *self)'],['../classdelegate_1_1detail_1_1_delegate_impl.html#a84a6393d9da9dc981c67252cb6a211bb',1,'delegate::detail::DelegateImpl::vPtrToFunAPtrExec(void *self)']]]
+  ['unique_5fptr_0',['unique_ptr',['../classstd_1_1unique__ptr.html#adf801223424be049d8ea8c99eb730caf',1,'std::unique_ptr::unique_ptr() noexcept'],['../classstd_1_1unique__ptr.html#a6dc4259a1e7f96906cf54c7a0f2fbbc9',1,'std::unique_ptr::unique_ptr(pointer p)']]]
 ];

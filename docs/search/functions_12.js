@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['write_0',['write',['../class_neo_s_w_serial.html#a056b05d1593df4b32b62c9fb9ded20a8',1,'NeoSWSerial']]]
+  ['vptrtofunaptrexec_0',['vPtrToFunAPtrExec',['../classdelegate_1_1detail_1_1_delegate_p_impl.html#a2ad3b4ade98db3141e00e3868592447f',1,'delegate::detail::DelegatePImpl::vPtrToFunAPtrExec(void *self, P... args)'],['../classdelegate_1_1detail_1_1_delegate_p_impl.html#a2ad3b4ade98db3141e00e3868592447f',1,'delegate::detail::DelegatePImpl::vPtrToFunAPtrExec(void *self, P... args)'],['../classdelegate_1_1detail_1_1_delegate_impl.html#a84a6393d9da9dc981c67252cb6a211bb',1,'delegate::detail::DelegateImpl::vPtrToFunAPtrExec(void *self)'],['../classdelegate_1_1detail_1_1_delegate_impl.html#a84a6393d9da9dc981c67252cb6a211bb',1,'delegate::detail::DelegateImpl::vPtrToFunAPtrExec(void *self)']]]
 ];
