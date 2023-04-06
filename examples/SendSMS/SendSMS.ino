@@ -12,7 +12,7 @@
  *    charlesayibiowu@hotmail.com
  *    Designed to work with the GSM Sim800l module
  *
- *    To Enable Debugging - Go to <BareBoneSim800.h file and change the
+ *    To Enable Debugging - Go to BareBoneSim800.h file and change the
  *    #define DEBUG 0 to #define DEBUG 1
  *
  *    PINOUT:
@@ -27,30 +27,39 @@
  *    You can change RX and TX pins callilng setPins() function before begin(), these are the default ones.
  *
  *
- *   Modified by: soldered.com, 21 March 2023
- *   See more at https://www.solde.red/333071
- *
  * @authors     Created on: Oct 24, 2017
  *              Author: Ayo Ayibiowu
  *              Email: charlesayibiowu@hotmail.com
  *              Version: v1.0
+ * 
+ *   Modified by: soldered.com, 21 March 2023
+ *   See more at https://www.solde.red/333071
  ***************************************************/
 
+// Include soldered library sof SIM800L breakout
 #include "SIM800L-SOLDERED.h"
 
-SIM800L sim800;
-// SIM800L sim800("your APN");  //needed for gprs funtionality
+// The next line makes that Dasduino's pin 8 becomes RX and you have to connect it to the TX on the breakout,
+// 9 pin also ...
+SIM800L sim800(8, 9); // So connect D8 to the TX, D9 to the RX
+// The same as SIM800L sim800(); because it's default pins
+// If you use Dasduino Lite, the pins are in the format "PAx", e.g. PA2, PA3
+
+// SIM800L sim800("your APN");  // Needed for gprs funtionality
+// When using constructors without pins, call setPins() with your pins.
+// Use setPins() before begin() function
 
 
 void setup()
 {
     Serial.begin(115200); // Start serial communication with PC using 115200 baudrate
-    sim800.begin();       // Initialize sim800 module
-    while (!Serial)       // Wait until serial is available
+    // sim800.setpins(8, 9); // Set any other TX and RX pins
+    sim800.begin(); // Initialize sim800 module
+    while (!Serial) // Wait until serial is available
         ;
 
     Serial.println("Testing GSM module For SMS Sending");
-    delay(8000); // this delay is necessary, it helps the device to be ready and connect to a network
+    delay(8000); // This delay is necessary, it helps the device to be ready and connect to a network
 
     Serial.println("Should be ready by now");
     bool deviceAttached = sim800.isAttached(); // Check if sim800 is connected
@@ -68,7 +77,8 @@ void setup()
 
     // Testing sending SMS aspect
 
-    const char *number = "+2347038945220";
+    // +385 is the country code for Croatia, change it to yours and replace xxxx with your number
+    const char *number = "+385xxxxxxxxx";
     char *message = "Hello, This is a text message";
 
     delay(1000);

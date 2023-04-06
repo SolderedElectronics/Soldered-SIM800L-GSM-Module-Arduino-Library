@@ -23,9 +23,9 @@
  *            GND     >>>   GND
  *        RX  8       >>>   TX
  *        TX  9       >>>   RX
- *
- *
- *   POWER SOURCE 4.2V (MAX) >>> VCC
+ *            VCC     >>>   VCC
+ *    Also, you have to connect the PWRKEY pin to the VCC or some digital pin if you want to control the module.
+ *    You can change RX and TX pins callilng setPins() function before begin(), these are the default ones.
  *
  *        Created on: Oct 24, 2017
  *        Author: Ayo Ayibiowu
@@ -84,12 +84,10 @@ byte BareBoneSim800::_checkResponse(uint16_t timeout)
     // This function handles the response from the radio and returns a status response
     uint8_t Status = 99; // the defualt stat and it means a timeout
     unsigned long t = millis();
-    // unsigned long count = 0;
 
     // loop through until their is a timeout or a response from the device
     while (millis() < t + timeout)
     {
-        // count++;
         if (gsmSerial->available()) // check if the device is sending a message
         {
 
@@ -116,7 +114,6 @@ byte BareBoneSim800::_checkResponse(uint16_t timeout)
              * SEND OK, DATA ACCEPT, SEND FAIL, CLOSE, CLOSED
              * note_ LOCAL iP COMMANDS HAS NO ENDING RESPONSE
              */
-
             for (byte i = 0; i < _responseInfoSize; i++)
             {
                 if ((strstr(temp, _responseInfo[i])) != NULL)
@@ -126,7 +123,6 @@ byte BareBoneSim800::_checkResponse(uint16_t timeout)
                 }
             }
         }
-        // Serial.println(count);
     }
     return Status;
 }
@@ -439,6 +435,68 @@ bool BareBoneSim800::dellAllSMS()
     }
     else
         return false;
+}
+
+bool BareBoneSim800::makeCall(const char *number)
+{
+    byte result;
+    // ATD+ +ZZxxxxxxxxxx; -> command for calling the number
+    gsmSerial->print("ATD+ ");
+    gsmSerial->print(number);
+    gsmSerial->print(";\r\n");
+
+    // Check response and return true if the call is made successfully, false if it's not
+    result = _checkResponse(5000);
+    if (result == OK)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+// Hang up the call
+// You can use this function when you calling or when you receive a call
+void BareBoneSim800::hangUpCall()
+{
+    // ATH - command for hang up the call
+    gsmSerial->print("ATH\r\n");
+}
+
+// Returns information about an incoming call
+bool BareBoneSim800::incomingCall()
+{
+    unsigned long t = millis();
+    String buffer = "";
+    int timeout = 1000;
+
+    while (millis() < t + timeout)
+    {
+        // If there is any data
+        if (gsmSerial->available())
+        {
+            // Read data and store it in buffer
+            buffer = _readData();
+
+            // Means that there is an incoming call
+            if (buffer.indexOf("RING") != -1)
+            {
+                // Print a call information on serial
+                Serial.println(buffer);
+
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+void BareBoneSim800::answerCall()
+{
+    // ATA - command that accepts an incoming call
+    gsmSerial->print("ATA\r\n");
 }
 
 String BareBoneSim800::getTime()

@@ -1,16 +1,12 @@
 /**
  **************************************************
  *
- * @file        CheckingNewSMS.ino
- * @brief       This is a bare bone library for communicating with SIM800
- *    It's barebone in that - it only provides basic functionalities while still
- *    maintaining strong performance and being memory friendly.
- *    It currently supports GSM(sending and reading SMS),
- *    GPRS connectivity(sending and receiving TCP) with Time and Location
+ * @file        makeCall.ino
+ * @brief       Example for making a phone call.
  *
- *    This library is written by Ayo Ayibiowu.
- *    charlesayibiowu@hotmail.com
- *    Designed to work with the GSM Sim800l module
+ *              This example will show you how you can make a phone call.
+ *              Just enter your number in the code below.
+ *
  *
  *    To Enable Debugging - Go to <BareBoneSim800.h file and change the
  *    #define DEBUG 0 to #define DEBUG 1
@@ -27,12 +23,8 @@
  *    You can change RX and TX pins callilng setPins() function before begin(), these are the default ones.
  *
  *
- * @authors     Created on: Oct 24, 2017
- *              Author: Ayo Ayibiowu
- *              Email: charlesayibiowu@hotmail.com
- *              Version: v1.0
- * 
- *   Modified by: soldered.com, 21 March 2023
+ * @author     Karlo Leksic for soldered.com
+ *
  *   See more at https://www.solde.red/333071
  ***************************************************/
 
@@ -49,10 +41,6 @@ SIM800L sim800(8, 9); // So connect D8 to the TX, D9 to the RX
 // When using constructors without pins, call setPins() with your pins.
 // Use setPins() before begin() function
 
-int previousSMSIndex = 0;
-int currentSMSIndex = 0;
-String message = "";
-
 void setup()
 {
     Serial.begin(115200); // Start serial communication with PC using 115200 baudrate
@@ -61,12 +49,13 @@ void setup()
     while (!Serial) // Wait until serial is available
         ;
 
-    Serial.println("Testing GSM module For New SMS Checking");
+    Serial.println("Making a call example");
     delay(8000); // This delay is necessary, it helps the device to be ready and connect to a network
 
     Serial.println("Should be ready by now");
-    bool deviceAttached = sim800.isAttached(); // Check if sim800 is connected
-    if (deviceAttached)
+
+    // Check if sim800 is connected
+    if (sim800.isAttached())
     {
         Serial.println("Device is Attached");
     }
@@ -78,30 +67,33 @@ void setup()
             ;
     }
 
-    // Delete all sms in memory
-    sim800.dellAllSMS();
+    // Make a call - here you enter the number you want to call
+    Serial.println("Making a call");
 
-    // Save the last sms
-    currentSMSIndex = sim800.currentMessageIndex; // Reads the last saved sms index
-    previousSMSIndex = currentSMSIndex;
+    // Function makeCall returns 1 if the call is made successfully
+    if (sim800.makeCall("+385996603414"))
+    {
+        // Calling for 15 seconds
+        Serial.print("Calling");
+        for (int i = 0; i < 15; i++)
+        {
+            // Print a dot every 1 second on serial while waiting / calling
+            Serial.print(".");
+            delay(1000);
+        }
+        Serial.println();
+    }
+    else
+    {
+        Serial.println("Something went wrong");
+    }
 
-    Serial.println("Ready, Send your new SMS");
+    // Hang up call
+    sim800.hangUpCall();
+    Serial.println("Hang up call");
 }
 
 void loop()
 {
-    bool checkSMS = sim800.checkNewSMS(); // Check if tehere is incoming message
-    if (checkSMS)
-    {
-        Serial.println("New SMS receieved");
-        currentSMSIndex = sim800.currentMessageIndex; // Reads the last saved sms index
-
-        // Lets read the sms
-        message = sim800.readSMS(currentSMSIndex); // Read sms and save it in message variable
-        Serial.print("Received message is: ");
-        Serial.println(message);
-        previousSMSIndex = currentSMSIndex; // Update your sms index
-    }
-
-    delay(5000);
+    // Nothing. We want to make only one call
 }
