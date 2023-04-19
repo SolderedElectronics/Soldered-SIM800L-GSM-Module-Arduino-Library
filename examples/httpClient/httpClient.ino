@@ -53,7 +53,7 @@ void setup()
 {
     Serial.begin(115200); // Start serial communication with PC using 115200 baudrate
     // If you use Dasduino Lite, the pins are in the format "PAx", e.g. PA2, PA3
-    sim800.setpins(8, 9); // Set any other TX and RX pins
+    sim800.setPins(8, 9); // Set any other TX and RX pins
     sim800.begin();       // Initialize sim800 module
     while (!Serial)       // Wait until serial is available
         ;
