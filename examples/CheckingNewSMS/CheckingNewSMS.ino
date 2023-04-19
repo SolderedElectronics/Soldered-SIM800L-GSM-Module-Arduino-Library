@@ -56,7 +56,7 @@ String message = "";
 void setup()
 {
     Serial.begin(115200); // Start serial communication with PC using 115200 baudrate
-    // sim800.setpins(8, 9); // Set any other TX and RX pins
+    // sim800.setPins(8, 9); // Set any other TX and RX pins
     sim800.begin(); // Initialize sim800 module
     while (!Serial) // Wait until serial is available
         ;
