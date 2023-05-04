@@ -2,79 +2,89 @@
  **************************************************
  *
  * @file        makeCall.ino
- * @brief       Example for making a phone call.
+ * @brief       Example for making a phone call with the SIM800 module.
  *
- *              This example will show you how you can make a phone call.
- *              Just enter your number in the code below.
+ *              To successfully run the sketch:
+ *              -Change RX and TX pin defines, according to your board.
+ *              -Insert a valid SIM card in the SIM800 module.
+ *              -Change the phone number to a valid one in the code below.
  *
+ *              NOTE: SIM800 draws a lot of current so additional power with a good connection is probably required.
  *
- *    To Enable Debugging - Go to <BareBoneSim800.h file and change the
- *    #define DEBUG 0 to #define DEBUG 1
- *
- *    PINOUT:
- *        _____________________________
- *       |  Dasduino  >>>   SIM800L   |
- *        -----------------------------
- *           GND      >>>   GND
- *        RX  8       >>>   TX
- *        TX  9       >>>   RX
- *           VCC      >>>   VCC
- *    Also, you have to connect the PWRKEY pin to the VCC or some digital pin if you want to control the module.
- *    You can change RX and TX pins callilng setPins() function before begin(), these are the default ones.
- *
+ *              To Enable Debugging - Go to <BareBoneSim800.h file and change the
+ *              #define DEBUG 0 to #define DEBUG 1
  *
  * @author     Karlo Leksic for soldered.com
  *
  *   See more at https://www.solde.red/333071
  ***************************************************/
 
+/**
+ * Connecting diagram:
+ *
+ * SIM800 Breakout              Dasduino Core / Connect / ConnectPlus
+ * GND------------------------->GND
+ * TX-------------------------->RX (PIN 8) / 13 / IO33
+ * RX-------------------------->TX (PIN 9) / 12 / IO32
+ * VCC------------------------->VCC
+ * PWRKEY---------------------->VCC
+ *
+ * You may use any other available pins on your board as well.
+ */
+
 // Include soldered library sof SIM800L breakout
 #include "SIM800L-SOLDERED.h"
 
-// The next line makes that Dasduino's pin 8 becomes RX and you have to connect it to the TX on the breakout,
-// 9 pin also ...
-SIM800L sim800(8, 9); // So connect D8 to the TX, D9 to the RX
-// The same as SIM800L sim800(); because it's default pins
-// If you use Dasduino Lite, the pins are in the format "PAx", e.g. PA2, PA3
+// RX and TX pins
+// Make sure to change this if required
+#define RX_PIN 8
+#define TX_PIN 9
 
-// SIM800L sim800("your APN");  // Needed for gprs funtionality
-// When using constructors without pins, call setPins() with your pins.
-// Use setPins() before begin() function
+// +385 is the country code for Croatia, change it to yours and replace # signs with the number you want to text
+const char *phoneNumber = "+385#########";
+
+// Create SIM800 object on the given pins
+SIM800L sim800(RX_PIN, TX_PIN);
 
 void setup()
 {
-    Serial.begin(115200); // Start serial communication with PC using 115200 baudrate
-    // sim800.setPins(8, 9); // Set any other TX and RX pins
-    sim800.begin(); // Initialize sim800 module
-    while (!Serial) // Wait until serial is available
-        ;
+    // Start Serial communication with PC using 115200 baud rate
+    Serial.begin(115200);
 
-    Serial.println("Making a call example");
-    delay(8000); // This delay is necessary, it helps the device to be ready and connect to a network
+    // This must be called if we are using pins other than default
+    // sim800.setPins(RX_PIN, TX_PIN);
 
-    Serial.println("Should be ready by now");
+    sim800.begin(); // Initialize SIM800 module
+    Serial.println("Making a call with SIM800 Breakout...");
 
-    // Check if sim800 is connected
+    // This delay is necessary, it helps the device to be ready and connect to a network
+    delay(8000);
+    Serial.println("Device should be ready by now.");
+
+    // Check if SIM800 is connected
     if (sim800.isAttached())
     {
         Serial.println("Device is Attached");
     }
     else
     {
-        Serial.println("Not Attached");
+        Serial.println("Can't find SIM800!");
 
+        // Can't find SIM800 module, go to infinite loop
         while (1)
-            ;
+        {
+            delay(100);
+        }
     }
 
-    // Make a call - here you enter the number you want to call
-    Serial.println("Making a call");
+    Serial.println("SIM800 found!");
+    Serial.println("Starting call!");
 
     // Function makeCall returns 1 if the call is made successfully
-    if (sim800.makeCall("+385996603414"))
+    if (sim800.makeCall(phoneNumber))
     {
         // Calling for 15 seconds
-        Serial.print("Calling");
+        Serial.print("Calling...");
         for (int i = 0; i < 15; i++)
         {
             // Print a dot every 1 second on serial while waiting / calling
@@ -85,15 +95,15 @@ void setup()
     }
     else
     {
-        Serial.println("Something went wrong");
+        Serial.println("Something went wrong when making the call.");
     }
 
     // Hang up call
     sim800.hangUpCall();
-    Serial.println("Hang up call");
+    Serial.println("Hung up call.");
 }
 
 void loop()
 {
-    // Nothing. We want to make only one call
+    // Nothing here
 }
