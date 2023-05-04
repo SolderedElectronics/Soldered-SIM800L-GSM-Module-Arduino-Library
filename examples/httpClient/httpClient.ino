@@ -2,100 +2,117 @@
  **************************************************
  *
  * @file        httpClient.ino
- * @brief       This is a bare bone library for communicating with SIM800
- *    It's barebone in that - it only provides basic functionalities while still
- *    maintaining strong performance and being memory friendly.
- *    It currently supports GSM(sending and reading SMS),
- *    GPRS connectivity(sending and receiving TCP) with Time and Location
+ * @brief       Example for connecting to the internet with the SIM800 module.
  *
- *    This library is written by Ayo Ayibiowu.
- *    charlesayibiowu@hotmail.com
- *    Designed to work with the GSM Sim800l module
+ *              To successfully run the sketch:
+ *              -Change RX and TX pin defines, according to your board.
+ *              -Insert a valid SIM card in the SIM800 module.
+ *              - Make sure the card can go on the internet.
  *
- *    To Enable Debugging - Go to BareBoneSim800.h file and change the
- *    #define DEBUG 0 to #define DEBUG 1
+ *              NOTE: SIM800 draws a lot of current so additional power with a good connection is probably required.
  *
- *    PINOUT:
- *        _____________________________
- *       |  Dasduino  >>>   SIM800L   |
- *        -----------------------------
- *           GND      >>>   GND
- *        RX  8       >>>   TX
- *        TX  9       >>>   RX
- *           VCC      >>>   VCC
- *    Also, you have to connect the PWRKEY pin to the VCC or some digital pin if you want to control the module.
- *    You can change RX and TX pins callilng setPins() function before begin(), these are the default ones.
+ *              To Enable Debugging - Go to <BareBoneSim800.h file and change the
+ *              #define DEBUG 0 to #define DEBUG 1
  *
+ * @author     Karlo Leksic for soldered.com
  *
- * @authors     Created on: Oct 24, 2017
- *              Author: Ayo Ayibiowu
- *              Email: charlesayibiowu@hotmail.com
- *              Version: v1.0
- * 
- *   Modified by: soldered.com, 21 March 2023
  *   See more at https://www.solde.red/333071
  ***************************************************/
+
+/**
+ * Connecting diagram:
+ *
+ * SIM800 Breakout              Dasduino Core / Connect / ConnectPlus
+ * GND------------------------->GND
+ * TX-------------------------->RX (PIN 8) / 13 / IO33
+ * RX-------------------------->TX (PIN 9) / 12 / IO32
+ * VCC------------------------->VCC
+ * PWRKEY---------------------->VCC
+ *
+ * You may use any other available pins on your board as well.
+ */
 
 // Include soldered library sof SIM800L breakout
 #include "SIM800L-SOLDERED.h"
 
-SIM800L sim800("internet.ht.hr"); // To declare the library with an APN
-// When using constructors without pins, call setPins() with your pins. Default are 8 and 9
-// Use setPins() before begin() function!
+// RX and TX pins
+// Make sure to change this if required
+#define RX_PIN 8
+#define TX_PIN 9
 
-// Connecting to the Internet and Acting as an HTTP Web Client
-// username and password has been set to "" in the Library Code
+// Create SIM800 object with a specified APN
+// APN (Access Point Name) is an identifier which helps mobile networks connect to the internet
+// To find yours:
+//  -Insert the SIM800 SIM card into your mobile phone
+//  -Check 'Mobile Data Options' (or similar) in your Settings app
+// The right one should be automatically selected.
+SIM800L sim800("internet.ht.hr");
+
+// Link to make sample GET request with
 char resource[] = "postman-echo.com/get";
 
+// HTTP Port
 const int port = 80;
 
 void setup()
 {
-    Serial.begin(115200); // Start serial communication with PC using 115200 baudrate
-    // If you use Dasduino Lite, the pins are in the format "PAx", e.g. PA2, PA3
-    sim800.setPins(8, 9); // Set any other TX and RX pins
-    sim800.begin();       // Initialize sim800 module
-    while (!Serial)       // Wait until serial is available
-        ;
+    // Start Serial communication with PC using 115200 baud rate
+    Serial.begin(115200);
 
-    Serial.println("Testing GSM module For GPRS Connectivity");
-    delay(8000); // This delay is necessary, it helps the device to be ready and connect to a network
+    // This must be called if we are using pins other than default
+    sim800.setPins(RX_PIN, TX_PIN);
 
-    Serial.println("Should be ready by now");
-    bool deviceAttached = sim800.isAttached(); // Check if sim800 is connected
-    if (deviceAttached)
+    sim800.begin(); // Initialize SIM800 module
+    Serial.println("Doing GET request on the internet with SIM800 Breakout...");
+
+    // This delay is necessary, it helps the device to be ready and connect to a network
+    delay(8000);
+    Serial.println("Device should be ready by now.");
+
+    // Check if SIM800 is connected
+    if (sim800.isAttached())
     {
         Serial.println("Device is Attached");
     }
     else
     {
-        Serial.println("Not Attached");
+        Serial.println("Can't find SIM800!");
 
+        // Can't find SIM800 module, go to infinite loop
         while (1)
-            ;
+        {
+            delay(100);
+        }
     }
 
-    // Connecting the the GPRS APN Network
-    Serial.println(" Connecting to APN");
-    bool netConnect = sim800.gprsConnect(); // Check if sim800 is connected to network
-    if (netConnect)
-        Serial.println("Connected to Network");
-    else
-        Serial.println("An Error Occured");
-
-    if (netConnect)
+    // Connect to the GPRS APN Network
+    Serial.println("Connecting to APN...");
+    if (sim800.gprsConnect())
     {
-        Serial.println("Making HTTP Get Request");
-        String result = sim800.sendHTTPData(resource); // Send command
-        Serial.println("Received Info: ");
-        Serial.println(result);
+        Serial.println("Connected!");
+    }
+    else
+    {
+        Serial.println("Something went wrong while connecting.");
+        while (1)
+        {
+            delay(100);
+        }
     }
 
-    sim800.closeHTTP();      // disconnect from server
-    sim800.gprsDisconnect(); // Close connection with network
+    Serial.println("Making HTTP GET request...");
+
+    // Send request and print the result!
+    String result = sim800.sendHTTPData(resource);
+    Serial.println("Received: ");
+    Serial.println(result);
+
+    // Disconnect and close connection with network
+    sim800.closeHTTP();
+    sim800.gprsDisconnect();
 }
 
 void loop()
 {
-    // zZZzz
+    // Nothing here
 }
