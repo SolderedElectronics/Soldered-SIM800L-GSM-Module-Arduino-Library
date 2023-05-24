@@ -8,6 +8,8 @@
  *              -Change RX and TX pin defines, according to your board.
  *              -Insert a valid SIM card in the SIM800 module.
  *              -Call the number of the SIM card once it's ready.
+ * 
+ *              NOTE: SIM800 draws a lot of current so additional power with a good connection is probably required.
  *
  *              To Enable Debugging - Go to <BareBoneSim800.h file and change the
  *              #define DEBUG 0 to #define DEBUG 1

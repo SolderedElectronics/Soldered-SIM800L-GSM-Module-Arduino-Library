@@ -44,7 +44,7 @@
 const char *phoneNumber = "+385#########";
 
 // You may also change the contents of the message here
-char *message = "Hello, This is a text message";
+char *message = "Hello from SIM800!";
 
 // Create SIM800 object on the given pins
 SIM800L sim800(RX_PIN, TX_PIN);
